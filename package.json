@@ -1,0 +1,28 @@
+{
+  "name": "simonwoodtli.com",
+  "version": "1.0.0",
+  "description": "👨‍💻 my personal website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonWoodtli/simonwoodtli.com.git"
+  },
+  "keywords": [
+    "personal",
+    "blog",
+    "website",
+    "portfolio"
+  ],
+  "author": "Simon D. Woodtli",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/SimonWoodtli/simonwoodtli.com/issues"
+  },
+  "homepage": "https://github.com/SimonWoodtli/simonwoodtli.com#readme",
+  "devDependencies": {
+    "browser-sync": "^2.29.3"
+  }
+}
