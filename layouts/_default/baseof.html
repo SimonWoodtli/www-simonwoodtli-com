@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
   </head>
   <body>
-    <p>Top of baseof</p>
-    <hr>
-    {{ block "main" . }}{{ end }}
-    <hr>
-    <p>Bottom of baseof</p>
+     {{ $js := resources.Get "js/main.js" }}
+     <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
   </body>
 </html>
