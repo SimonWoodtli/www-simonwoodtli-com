@@ -8,17 +8,14 @@
     {{ $style := resources.Get "css/style.css" }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
   </head>
-  <body>
-    <div class="grid 2xl:grid-cols-[25rem_7rem_minmax(200px,_1fr)_7rem] xl:grid-cols-[19rem_4rem_minmax(200px,_1fr)_4rem] md:grid-cols-[3.5rem_minmax(200px,_1fr)_3.5rem] grid-cols-[1.75rem_minmax(200px,_1fr)_1.75rem]">
-        {{ partial "sidebar.html" . }}
-        {{ partial "header.html" . }}
-        <!-- placeholder div to keep last grid column busy -->
-        <div class="row-span-4"></div>
-        {{ block "main" . }}{{ end }}
-      <hr>
-      <p class="">Bottom of baseof</p>
-    </div>
-     {{ $js := resources.Get "js/main.js" }}
-     <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
+  <body class="bg-primary text-regular grid 2xl:grid-cols-4-big xl:grid-cols-4-med md:grid-cols-3-big grid-cols-3-med">
+    {{ partial "sidebar.html" . }}
+    {{ partial "header.html" . }}
+    <div class="row-span-4"></div><!-- placeholder div to keep last grid column busy -->
+    {{ block "main" . }}{{ end }}
+    <p class="">Bottom of baseof</p>
+    <hr>
+    {{ $js := resources.Get "js/main.js" }}
+    <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
   </body>
 </html>

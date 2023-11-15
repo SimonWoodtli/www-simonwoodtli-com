@@ -3,6 +3,12 @@ module.exports = {
   content: ["./layouts/**/*.{html,js}"],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        '4-big': '25rem 7rem minmax(12rem, 1fr) 7rem',
+        '4-med': '19rem 4rem minmax(12rem, 1fr) 4rem',
+        '3-big': '3.5rem minmax(12rem, 1fr) 3.5rem',
+        '3-med': '1.75rem minmax(12rem, 1fr) 1.75rem'
+      },
       colors: {
         're': '#cc241d',
         'lightre': '#fb4934',
