@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: ["./layouts/**/*.{html,js}"],
+  safelist: ['theme-dark'],
   theme: {
     extend: {
       gridTemplateColumns: {
@@ -10,41 +14,13 @@ module.exports = {
         '3-med': '1.75rem minmax(12rem, 1fr) 1.75rem'
       },
       colors: {
-        're': '#cc241d',
-        'lightre': '#fb4934',
-        'gr': '#98971a',
-        'lightgr': '#b8bb26',
-        'ye': '#d79921',
-        'lightye': '#fabd2f',
-        'ble': '#458588',
-        'lightbl': '#83a598',
-        'pu': '#b16286',
-        'lightpu': '#d3869b',
-        'aq': '#689d6a',
-        'lightaq': '#8ec07c',
-        'or': '#d65d0e',
-        'lightor': '#fe8019',
-        'bl': {
-          400: '#928374',
-          500: '#7c6f64',
-          600: '#665c54',
-          700: '#504945',
-          800: '#3c3836',
-          900: '#282828',
-          950: '#1d2021'
-        },
-        'wh': {
-          700: '#fbf1c7',
-          800: '#ebdbb2',
-          900: '#d5c4a1',
-          950: '#bdae93'
-        },
-        'grey': {
-          700: '#d5c4a1',
-          800: '#bdae93',
-          900: '#a89984',
-          950: '#928374'
-        }
+        'regular': 'rgb(var(--color-text-regular) / <alpha-value>)',
+        'inverted': 'rgb(var(--color-text-inverted) / <alpha-value>)',
+        'muted': 'rgb(var(--color-text-muted) / <alpha-value>)',
+        'accent': 'rgb(var(--color-text-accent) / <alpha-value>)',
+        'primary': 'rgb(var(--color-bg-primary) / <alpha-value>)',
+        'secondary': 'rgb(var(--color-bg-secondary) / <alpha-value>)',
+        'tertiary': 'rgb(var(--color-bg-tertiary) / <alpha-value>)'
       }
     },
   },

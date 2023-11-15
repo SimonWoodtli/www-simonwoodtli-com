@@ -8,6 +8,38 @@
  }
 }
 
-* {
- @apply text-bl-800;
+
+@layer base {
+  /* default light theme: */
+  :root,
+  .theme-light {
+    /* use rgb because opacity with alpha channel can be easily added with r g b / a */
+    /* colors mostly used with text/border */
+    --color-text-regular: 61 68 73; /*mild black*/
+    --color-text-muted: 127 136 143; /*gray */
+    /*--color-text-inverted: 245 106 106; /*light red*/
+    --color-text-inverted: 251 73 52; /*gruvbox light red(not sure if this or original light theme red)*/
+    /*--color-text-inverted: 98 212 229; /*light blue*/
+    /*--color-text-inverted: 50 205 50; /*light green*/
+    --color-text-accent: var(--color-text-inverted);
+    /* colors mostly used with bg to fill */
+    --color-bg-primary: 255 255 255; /* white */
+    --color-bg-secondary: 241 245 249; /* light gray */
+    --color-bg-tertiary: 226 232 240; /* currently no used, but maybe needed */
+  }
+
+  /* default dark theme: */
+  .theme-dark {
+    /* colors mostly used with text/border */
+    --color-text-regular: 200 200 200; /*grayish white*/
+    --color-text-muted: 127 136 143; /*gray (seems fine same as light)*/
+    --color-text-inverted: 251 73 52; /*gruvbox light red(not sure if this or original light theme red)*/
+    /*--color-text-inverted: 98 212 229; /*light blue*/
+    /*--color-text-inverted: 50 205 50; /*light green*/
+    --color-text-accent: var(--color-text-inverted);
+    /* colors mostly used with bg to fill */
+    --color-bg-primary: 40 40 40; /*gruvbox black*/
+    --color-bg-secondary: 32 32 32; /*darker gruvbox black*/
+    --color-bg-tertiary: 24 24 24; /* currently no used, but maybe needed */
+  }
 }

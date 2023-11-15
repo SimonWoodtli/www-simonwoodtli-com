@@ -8,10 +8,9 @@
     
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body>
-    <div class="grid 2xl:grid-cols-[25rem_7rem_minmax(200px,_1fr)_7rem] xl:grid-cols-[19rem_4rem_minmax(200px,_1fr)_4rem] md:grid-cols-[3.5rem_minmax(200px,_1fr)_3.5rem] grid-cols-[1.75rem_minmax(200px,_1fr)_1.75rem]">
-        <aside id="toggleMenu" class="toggleMenu xl:block hidden row-span-4 2xl:w-[25rem] w-[19rem] text-center bg-gray-100">
-  <nav>
+  <body class="bg-primary text-regular grid 2xl:grid-cols-4-big xl:grid-cols-4-med md:grid-cols-3-big grid-cols-3-med">
+    <aside id="toggleMenu" class="toggleMenu xl:block hidden row-span-4 2xl:w-[25rem] w-[19rem] text-center bg-secondary">
+  <nav class="">
     <h2>Menu</h2>
     <ul>
       <li><a href="#">Homepage</a></li>
@@ -21,41 +20,38 @@
 </aside>
 
 <div id="toggleHamburger" class="toggleHamburger row-span-4 2xl:my-12 md:visible invisible my-7 mx-auto 2xl:space-y-1.5 space-y-1">
-  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-lightre"></span>
-  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-lightre"></span>
-  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-lightre"></span>
+  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-accent"></span>
+  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-accent"></span>
+  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-accent"></span>
 </div>
 
-        <header>
+    <header>
   <nav class="flex items-end justify-between 2xl:h-40 md:h-28 h-32 2xl:pb-5 pb-4 md:pt-7 pt-5 mx-auto">
 
     <div class="flex flex-col md:justify-end justify-between md:h-23 h-28 md:pt-7 pt-5">
-      <div id="toggleHamburgerSmall" class="toggleHamburger row-span-4 md:hidden block space-y-1 bg-gray-200 py-3.5 px-5 -mt-2 rounded self-start">
-        <span class="block w-5 h-0.5 bg-gray-400"></span>
-        <span class="block w-5 h-0.5 bg-gray-400"></span>
-        <span class="block w-5 h-0.5 bg-gray-400"></span>
+      <div id="toggleHamburgerSmall" class="toggleHamburger row-span-4 md:hidden block space-y-1 bg-tertiary py-3.5 px-5 -mt-2 rounded self-start">
+        <span class="block w-5 h-0.5 bg-muted"></span>
+        <span class="block w-5 h-0.5 bg-muted"></span>
+        <span class="block w-5 h-0.5 bg-muted"></span>
       </div>
-      <a href="/" class="hover:text-lightre 2xl:text-2xl text-xl">9th Ring, Vim</a>
+      <a href="/" class="hover:text-accent 2xl:text-2xl text-xl">9th Ring, Vim</a>
     </div>
 
-
-    <ul class="flex md:self-end self-start md:space-x-4 space-x-2 text-gray-500">
-      <li><a href="#" id="toggleDark" class="toggleDark icon far fa-moon text-gray-500 hover:text-lightre hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-
-      <li><a href="mailto:simonwoodtli@posteo.com" class="icon far fa-envelope text-gray-500 hover:text-lightre hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="https://twitter.com/SimonWoodtliDev" class="icon fab fa-x-twitter text-gray-500 hover:text-lightre hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="https://linkedin.com/in/simonwoodtli" class="icon fab fa-linkedin text-gray-500 hover:text-lightre hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="https://github.com/SimonWoodtli" class="icon fab fa-github text-gray-500 hover:text-lightre hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="rss.xml" class="icon fas fa-rss hover:text-lightre text-gray-500 hover:scale-110 duration-500 text-xl"></a></li>
+    <ul class="flex md:self-end self-start md:space-x-4 space-x-2 text-muted">
+      <li><a href="#" id="toggleDark" class="toggleDark icon far fa-moon text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+      <li><a href="mailto:simonwoodtli@posteo.com" class="icon far fa-envelope text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+      <li><a href="https://twitter.com/SimonWoodtliDev" class="icon fab fa-x-twitter text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+      <li><a href="https://linkedin.com/in/simonwoodtli" class="icon fab fa-linkedin text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+      <li><a href="https://github.com/SimonWoodtli" class="icon fab fa-github text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+      <li><a href="rss.xml" class="icon fas fa-rss hover:text-accent text-muted hover:scale-110 duration-500 text-xl"></a></li>
     </ul>
   </nav>
   
-  <div class="border-t border-4 border-lightre w-full"></div>
+  <div class="border-t border-4 border-accent w-full"></div>
 </header>
 
-        
-        <div class="row-span-4"></div>
-        
+    <div class="row-span-4"></div>
+    
   <h1>Tags</h1>
   <p>This is the list template</p>
   
@@ -72,10 +68,9 @@
     </p>
   </div>
 
-      <hr>
-      <p class="">Bottom of baseof</p>
-    </div>
-     
-     <script type="text/javascript" src="/js/main.js"></script>
+    <p class="">Bottom of baseof</p>
+    <hr>
+    
+    <script type="text/javascript" src="/js/main.js"></script>
   </body>
 </html>
