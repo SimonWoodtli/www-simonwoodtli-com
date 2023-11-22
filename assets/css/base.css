@@ -22,6 +22,7 @@
     /*--color-text-inverted: 98 212 229; /*light blue*/
     /*--color-text-inverted: 50 205 50; /*light green*/
     --color-text-accent: var(--color-text-inverted);
+    --color-text-ringgray: 209 213 219; /* gray-300 */
     /* colors mostly used with bg to fill */
     --color-bg-primary: 255 255 255; /* white */
     --color-bg-secondary: 241 245 249; /* light gray */
@@ -37,6 +38,7 @@
     /*--color-text-inverted: 98 212 229; /*light blue*/
     /*--color-text-inverted: 50 205 50; /*light green*/
     --color-text-accent: var(--color-text-inverted);
+    --color-text-ringgray: 40 40 40; /* gray-800 */
     /* colors mostly used with bg to fill */
     --color-bg-primary: 40 40 40; /*gruvbox black*/
     --color-bg-secondary: 32 32 32; /*darker gruvbox black*/
