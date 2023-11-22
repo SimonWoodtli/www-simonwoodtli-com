@@ -8,50 +8,119 @@
     
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body class="bg-primary text-regular grid 2xl:grid-cols-4-big xl:grid-cols-4-med md:grid-cols-3-big grid-cols-3-med">
-    <aside id="toggleMenu" class="toggleMenu xl:block hidden row-span-4 2xl:w-[25rem] w-[19rem] text-center bg-secondary">
-  <nav class="">
-    <h2>Menu</h2>
-    <ul>
-      <li><a href="#">Homepage</a></li>
-      <li><a href="#">Blog</a></li>
-    </ul>
-  </nav>
-</aside>
+  <body class="flex flex-row justify-between relative bg-primary
+    text-regular">
 
-<div id="toggleHamburger" class="toggleHamburger row-span-4 2xl:my-12 md:visible invisible my-7 mx-auto 2xl:space-y-1.5 space-y-1">
-  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-accent"></span>
-  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-accent"></span>
-  <span class="block 2xl:w-7 w-5 2xl:h-1 h-[0.1875rem] bg-accent"></span>
+    
+    
+    
+    
+
+    <aside id="sidebar" class="xl:relative fixed md:inset-y-0 md:left-0
+    transform xl:translate-x-0 -translate-x-full transition duration-300 ease-in-out
+      2xl:w-[25rem] xl:w-[20rem] h-full flex flex-col bg-secondary">
+      
+
+<button id='btnSidebar' class="absolute 2xl:-right-[4.7rem] 2xl:top-[2.5rem] xl:-right-[3.2rem] xl:top-[1.7rem]">
+  <svg id="svgSidebar" xmlns="http://www.w3.org/2000/svg" fill="none"
+    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+    class="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 stroke-2 stroke-accent">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+
+
+
+<div class="mx-[2.375rem] mt-7 mb-28">
+<input type="text" placeholder="&#xf002; Search Blog"
+class="w-full 2xl:h-11 xl:h-9 2xl:pl-5 xl:pl-4 rounded text-xl bg-tertiary
+active:accent focus:outline-none focus:ring-2 focus:ring-accent ring-1 ring-ringgray">
 </div>
 
-    <header>
-  <nav class="flex items-end justify-between 2xl:h-40 md:h-28 h-32 2xl:pb-5 pb-4 md:pt-7 pt-5 mx-auto">
+<span class="ml-[2.375rem] block w-16 text-xl border-b-[3px] pb-3
+  border-accent">Menu</span>
 
-    <div class="flex flex-col md:justify-end justify-between md:h-23 h-28 md:pt-7 pt-5">
-      <div id="toggleHamburgerSmall" class="toggleHamburger row-span-4 md:hidden block space-y-1 bg-tertiary py-3.5 px-5 -mt-2 rounded self-start">
-        <span class="block w-5 h-0.5 bg-muted"></span>
-        <span class="block w-5 h-0.5 bg-muted"></span>
-        <span class="block w-5 h-0.5 bg-muted"></span>
-      </div>
-      <a href="/" class="hover:text-accent 2xl:text-2xl text-xl">9th Ring, Vim</a>
+<nav class="mx-[2.375rem] mt-16 text-lg uppercase font-thin">
+  <ul class="flex flex-col">
+    <li><a href="#" class="block transition duration-200 hover:bg-tertiary rounded border-b-2 border-ringgray py-4" aria-current="true">Home</a></li>
+    <li><a href="#" class="block transition duration-200 hover:bg-tertiary rounded border-b-2 border-ringgray py-4">Archive</a></li>
+    <li><a href="#" class="block transition duration-200 hover:bg-tertiary rounded border-b-2 border-ringgray py-4">About</a></li>
+  </ul>
+</nav>
+<span class="ml-[2.375rem] my-16 w-[7.5rem] block text-xl border-b-[3px]
+  pb-3 border-accent">Get in touch</span>
+
+    </aside>
+
+    
+    
+    
+    
+    <aside id="sidebarMobile" class="xl:hidden fixed inset-y-0 left-0
+      w-[18.5rem] transform -translate-x-full transition duration-300
+      ease-in-out flex flex-col bg-secondary">
+      
+  
+<button id='btnSidebarMobile' class="absolute md:bg-transparent bg-tertiary bg-opacity-80 md:py-0 py-2 md:px-0 px-4 rounded md:-right-[2.6rem] md:top-[1.5rem] -right-[4.1rem] top-[0.95rem]">
+  <svg id="svgSidebarMobile" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+   class="md:w-7 md:h-7 w-6 h-6 md:stroke-accent stroke-muted stroke-2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+  </svg>
+</button>
+
+
+
+
+<div class="mx-[2.375rem] mt-7 mb-28">
+<input type="text" placeholder="&#xf002; Search Blog"
+class="w-full 2xl:h-11 xl:h-9 2xl:pl-5 xl:pl-4 rounded text-xl bg-tertiary
+active:accent focus:outline-none focus:ring-2 focus:ring-accent ring-1 ring-ringgray">
+</div>
+
+<span class="ml-[2.375rem] block w-16 text-xl border-b-[3px] pb-3
+  border-accent">Menu</span>
+
+<nav class="mx-[2.375rem] mt-16 text-lg uppercase font-thin">
+  <ul class="flex flex-col">
+    <li><a href="#" class="block transition duration-200 hover:bg-tertiary rounded border-b-2 border-ringgray py-4" aria-current="true">Home</a></li>
+    <li><a href="#" class="block transition duration-200 hover:bg-tertiary rounded border-b-2 border-ringgray py-4">Archive</a></li>
+    <li><a href="#" class="block transition duration-200 hover:bg-tertiary rounded border-b-2 border-ringgray py-4">About</a></li>
+  </ul>
+</nav>
+<span class="ml-[2.375rem] my-16 w-[7.5rem] block text-xl border-b-[3px]
+  pb-3 border-accent">Get in touch</span>
+
+
+    </aside>
+
+    
+    
+    <section class="grow 2xl:mx-[7rem] xl:mx-[4.5rem] md:mx-[3.5rem] mx-[1.75rem]">
+      
+<section class="flex grow">
+  <header class="grow">
+
+    <div class="flex flex-row justify-between border-b-4 border-accent">
+
+        <a href="/" class="hover:text-accent place-self-end block 2xl:text-2xl text-xl">9th Ring, Vim</a>
+
+      <nav class="flex items-end justify-between 2xl:h-40 md:h-28 h-32 2xl:pb-5 pb-4 md:pt-7 pt-5">
+        <ul class="flex md:self-end self-start md:space-x-4 space-x-2 text-muted">
+          <li><a href="#" id="toggleDark" class="toggleDark icon far fa-moon text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+          <li><a href="mailto:simonwoodtli@posteo.com" class="icon far fa-envelope text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+          <li><a href="https://twitter.com/SimonWoodtliDev" class="icon fab fa-x-twitter text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+          <li><a href="https://linkedin.com/in/simonwoodtli" class="icon fab fa-linkedin text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+          <li><a href="https://github.com/SimonWoodtli" class="icon fab fa-github text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
+          <li><a href="rss.xml" class="icon fas fa-rss hover:text-accent text-muted hover:scale-110 duration-500 text-xl"></a></li>
+        </ul>
+      </nav>
     </div>
 
-    <ul class="flex md:self-end self-start md:space-x-4 space-x-2 text-muted">
-      <li><a href="#" id="toggleDark" class="toggleDark icon far fa-moon text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="mailto:simonwoodtli@posteo.com" class="icon far fa-envelope text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="https://twitter.com/SimonWoodtliDev" class="icon fab fa-x-twitter text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="https://linkedin.com/in/simonwoodtli" class="icon fab fa-linkedin text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="https://github.com/SimonWoodtli" class="icon fab fa-github text-muted hover:text-accent hover:scale-110 duration-500 2xl:text-2xl text-xl"></a></li>
-      <li><a href="rss.xml" class="icon fas fa-rss hover:text-accent text-muted hover:scale-110 duration-500 text-xl"></a></li>
-    </ul>
-  </nav>
-  
-  <div class="border-t border-4 border-accent w-full"></div>
-</header>
+  </header>
+</section>
 
-    <div class="row-span-4"></div>
-    
+      
   <h1>Tags</h1>
   <p>This is the list template</p>
   
@@ -68,8 +137,10 @@
     </p>
   </div>
 
-    <p class="">Bottom of baseof</p>
-    <hr>
+      <p class="">Bottom of baseof</p>
+      <hr>
+    </section>
+
     
     <script type="text/javascript" src="/js/main.js"></script>
   </body>

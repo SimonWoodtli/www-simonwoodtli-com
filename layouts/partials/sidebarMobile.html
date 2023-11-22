@@ -1,21 +1,16 @@
-<!-- Desktop size Sidebar: It almost worked with just one sidebar for
-  both desktop and mobile. The Problem why I had to create two was
-  simply on a mobile sidebar you should be able to click outside of the
-  sidebar in order to close the sidebar. This requires inset-0 and
-  z-index on the container but when the container has a set width like
-  the aside does the button effect is only working within the sidebar. -->
-<!-- TODO instead of having two sidebars use go template lang on the
-  baseof.html and sidbar.html to avoid having to maintain two almost
-  identical sidebars -->
-<button id='btnSidebar' class="absolute 2xl:-right-[4.7rem] 2xl:top-[2.5rem] xl:-right-[3.2rem] xl:top-[1.7rem]">
-  <svg id="svgSidebar" xmlns="http://www.w3.org/2000/svg" fill="none"
-    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-    class="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 stroke-2 stroke-accent">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+<!-- to make the whole area outside of pop up nav bar toggable by the btn,
+  all sibling elements to button have z-10, also the button needs to
+  span over the whole page hence inset-0 on it, to still place it at the
+  right place use a div wrapper -->
+  <!-- M6 18L18 6M6 6l12 12 -->
+<button id='btnSidebarMobile' class="absolute md:bg-transparent bg-tertiary bg-opacity-80 md:py-0 py-2 md:px-0 px-4 rounded md:-right-[2.6rem] md:top-[1.5rem] -right-[4.1rem] top-[0.95rem]">
+  <svg id="svgSidebarMobile" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+   class="md:w-7 md:h-7 w-6 h-6 md:stroke-accent stroke-muted stroke-2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
   </svg>
 </button>
 
-
+<!--<div class="absolute inset-y-0 left-0 w-[17rem] z-10 bg-secondary">-->
 <!-- opacity-0 transition-all duration-1000 ease-in-out -->
 <!-- md:relative md:inset-auto md:z-auto fixed inset-0 z-10 -->
 <div class="mx-[2.375rem] mt-7 mb-28">
@@ -36,3 +31,4 @@ active:accent focus:outline-none focus:ring-2 focus:ring-accent ring-1 ring-ring
 </nav>
 <span class="ml-[2.375rem] my-16 w-[7.5rem] block text-xl border-b-[3px]
   pb-3 border-accent">Get in touch</span>
+<!--</div>-->
