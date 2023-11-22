@@ -7,8 +7,8 @@
     "build-style": "npx tailwindcss -i ./assets/css/base.css -o ./assets/css/style.css",
     "build-hugo": "bash -c \"/var/home/xnasero/.asdf/bin/asdf exec hugo --printPathWarnings --printUnusedTemplates --cleanDestinationDir\"",
     "build": "npm run build-style && npm run build-hugo",
-    "watch": "find . -name '*.js' -o -name '*.md' -o -name '*.html' | /bin/grep -Ev '(node_modules|public|assets)' | entr -ccdr npm run build",
-    "watchbg": "nohup bash -c 'find . -name \"*.js\" -o -name \"*.md\" -o -name \"*.html\" | /bin/grep -Ev \"(node_modules|public|assets)\" | entr -ccdr npm run build' > /tmp/build.output &",
+    "watch": "find . -name '*.js' -o -name '*.md' -o -name '*.html' | /bin/grep -Ev '(node_modules|public)' | entr -ccdr npm run build",
+    "watchbg": "nohup bash -c 'find . -name \"*.js\" -o -name \"*.md\" -o -name \"*.html\" | /bin/grep -Ev \"(node_modules|public)\" | entr -ccdr npm run build' > /tmp/build.output &",
     "serverbg": "nohup bash -c 'browser-sync start --server public --port=1313 --files \"*.html, css/*.css, js/*.js\"' > /tmp/browsersync.output &",
     "server": "browser-sync start --server public --port=1313 --files \"*.html, css/*.css, js/*.js\""
   },
