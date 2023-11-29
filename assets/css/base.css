@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
- .toggleDark:before {
-   content: "\f185"; /* sun alternative: lightbulb \f0eb or ideal pro version: moon-over-sun \f74a */
- }
-}
-
 @layer base {
   /* default light theme: */
   :root,

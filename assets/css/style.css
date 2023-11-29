@@ -1159,11 +1159,6 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.toggleDark:before {
-  content: "\f185";
-  /* sun alternative: lightbulb \f0eb or ideal pro version: moon-over-sun \f74a */
-}
-
 .placeholder\:italic::-moz-placeholder {
   font-style: italic;
 }
