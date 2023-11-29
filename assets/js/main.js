@@ -26,6 +26,7 @@ darkModeToggle.addEventListener('click', () => {
 
   }
 })
+
 // ------------------------------ Sidebar -----------------------------
 //const isRetina = () => window.devicePixelRatio > 1;
 //TODO make an animation for closing/opening svg, right now just simple
@@ -49,6 +50,9 @@ btnSidebarMobile.addEventListener('click', (e) => {
 btnSidebar.addEventListener('click', (e) => {
   //TODO try to solve this without the setTimout() func
   sidebar.classList.toggle('xl:translate-x-0')
-  setTimeout(() => { sidebar.classList.toggle('xl:relative')}, 100 )
+  //delay toggle hiddden for smoothing out slidebar open/close animation:
+  //setTimeout(() => { sidebar.classList.toggle('xl:relative')}, 100 )
+  setTimeout(() => { document.querySelector("#layoutFix").classList.toggle("hidden") }, 100 )
+  //change btn:
   svgSidebarPath.setAttribute('d', svgSidebarPath.getAttribute('d') === 'M6 18L18 6M6 6l12 12' ? 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' : 'M6 18L18 6M6 6l12 12');
 })
