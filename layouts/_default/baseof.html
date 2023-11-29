@@ -4,31 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
     <title>{{ with .Title }}{{ printf "%s | " . }}{{ end }}{{ site.Title }}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     {{ $style := resources.Get "css/style.css" }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
   </head>
-  <body class="flex flex-row justify-between relative bg-primary
-    text-regular">
-
+  <body class="flex flex-row justify-between relative bg-primary text-regular">
     <!-- since two sidebars used 'fixed' instead of 'absolute' -->
     <!-- 'absolute inset-y-0 left-0' together with 'transform
       -translate-x-full' to make it offcanvas sidebar, in other words
       by default the sidebar is outside of the canvas -->
     <!-- 'transition duration-300 ease-in-out' for the animation when burger toggled -->
     <!-- 'xl:relative absolute' to make it behave like a slidebar that
-      moves main content on desktop. And on mobile like a pop up
-      navigation-->
-
-    <aside id="sidebar" class="xl:relative fixed md:inset-y-0 md:left-0
+      moves main content on desktop. And on mobile like a pop up navigation-->
+    <!-- TODO merge both sideBars into one, should now be possible -->
+    <div id="layoutFix" class="2xl:w-[25rem] xl:w-[20rem] w-0"></div><!-- FIX for having a sliding sidebar combo with pop navbar AND scrollable -->
+    <aside id="sidebar" class="xl-relative xl:block hidden fixed md:inset-y-0 md:left-0
     transform xl:translate-x-0 -translate-x-full transition duration-300 ease-in-out
-      2xl:w-[25rem] xl:w-[20rem] h-full flex flex-col bg-secondary">
+      2xl:w-[25rem] xl:w-[20rem] flex flex-col bg-secondary">
       {{ partial "sidebar.html" . }}
     </aside>
 
-    <!-- Failed method: -->
-    <!-- 'fixed inset-0 and z-10' to have the aside span over whole canvas, -translate-x-full to hide it -->
-    <!--<aside id="sidebarMobile" class="xl:hidden fixed inset-y-0 right-0 left-0 z-10 transform -translate-x-full transition duration-300 ease-in-out flex flex-col">-->
     <!-- FIXME on mobile phones touching the btn has a blue trigger animation, rm that (only chroome, firefox does not)-->
     <aside id="sidebarMobile" class="xl:hidden fixed inset-y-0 left-0
       w-[18.5rem] transform -translate-x-full transition duration-300
@@ -36,7 +30,9 @@
       {{ partial "sidebarMobile.html" . }}
     </aside>
 
-    <!-- FIXME on mobile phones the right margin is not the same as the right -->
+    <!-- FIXME on phones if child elements overflow e.g. h1 with a
+      text-20xl. Then the left margin stays correct but it eats up the right margin.
+      Tried to use 'max-w-[calc(100% - 7rem)]' on container or prevent overflow on h1 'overflow-hidden whitespace-nowrap'
     <!-- content -->
     <section class="grow 2xl:mx-[7rem] xl:mx-[4.5rem] md:mx-[3.5rem] mx-[1.75rem]">
       {{ partial "header.html" . }}
