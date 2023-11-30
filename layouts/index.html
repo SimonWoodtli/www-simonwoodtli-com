@@ -1,5 +1,19 @@
 {{ define "main" }}
-<main class="">
-  <h1 class="text-5xl">Homepage</h1>
-</main>
+<div>
+  <section>
+  </section>
+  <main class="">
+    <article>
+      <!-- .Title gives the title of the current page, I need to range
+        over all posts and give that title instead. -->
+      <h1 class="text-5xl">{{ .Title }}</h1><!-- How to refer to the title of an article? -->
+      {{ .Content }}
+
+      <img><!-- How to refer to the image if given of an article? -->
+      <p></p><!-- How to refer to the p of a given article? -->
+
+      <a href="#">To be continued</a><!-- How to href to the given markdown article?-->
+    </article>
+  </main>
+</div>
 {{ end }}
