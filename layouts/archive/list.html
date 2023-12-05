@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+<div class="mx-auto max-w-[45rem]">
+  <section>
+    <h1>THIS IS THE ARCHIVE</h1>
+  </section>
+
+  <main>
+    <!-- loop pages start -->
+
+    {{ $posts := .Site.GetPage "section" "posts" }}
+    {{ $links := .Site.GetPage "section" "links" }}
+    {{ $pages := append $posts.Data.Pages $links.Data.Pages }}
+
+    {{ range $pages.GroupByDate "2006" }}
+    <h1>{{ .Key }}</h1>
+    {{ range .Pages }}
+    <ul class="list-disc">
+      <li>
+        <time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      </li>
+    </ul>
+    {{ end }}
+    {{ end }}
+
+
+  </main>
+</div>
+ {{ end }}

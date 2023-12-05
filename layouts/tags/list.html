@@ -1,0 +1,23 @@
+{{ define "main" }}
+<!-- this page is for content on simonwoodtli.com/tags/foo -->
+<main class="mx-auto max-w-[45rem] md:mt-24 mt-16 md:bg-secondary
+    bg-primary md:border-l-4 md:border-solid border-hidden
+    border-tertiary border-opacity-80 py-8jj">
+
+<h1>#{{ .Title }}</h1>
+<a href="/tags">To all tags</a>
+
+{{ range (.Paginate .Pages).Pages }}
+<ul class="pl-4 ml-4 list-disc">
+  <li class="flex gap-x-4">
+    <time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}"
+        class="">{{ .Date.Format "2006-01-02" }}</time>
+    <h1 class=""><a class="" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h1>
+  </li>
+</ul>
+{{ end }}
+
+{{ partial "pagination.html" . }}
+</main>
+
+{{ end }}

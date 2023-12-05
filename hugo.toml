@@ -1,3 +1,21 @@
-baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
+description = "My personal blog website"
+source = "https://github.com/SimonWoodtli/simonwoodtli.com/"
+baseURL = 'https://simonwoodtli.com/'
+license = "Apache-2.0"
+licenselink = "https://github.com/SimonWoodtli/simonwoodtli.com/blob/main/LICENSE"
+
+## sets amount of entries shown in list pages per page
+paginate = 30
+# By default Hugo turns tags and categories on. This is to disable
+# categories
+[taxonomies]
+  tag = 'tags'
+# By default Hugo content folder and URL strucuture are the same.
+# However I use /content/posts/timestamp/index.md, but still want the
+# URL to inlcude the title instead of the timestamp.
+[permalinks]
+ [permalinks.page]
+  posts = '/posts/:slug/'
+  links = '/links/:slug/'
