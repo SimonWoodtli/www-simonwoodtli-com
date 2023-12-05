@@ -40,12 +40,9 @@
 				{{ end }}
 				<!-- If post contains cover img display it-->
 				{{ if .Params.cover }}
-				 {{ with .Resources.GetMatch "*-cover.jpg" }}
-				 <img src="{{ .RelPermalink }}" alt="Cover image" loading="lazy" class="w-full m-0">
-				 {{ end }}
-				 <!--TODO find a way to make the printf way to get cover jpg work, or maybe just use the resources find method -->
-				<img src="{{ printf "%s/%s/%s-cover.jpg" .Section .Slug (.Page.Date.Format "20060102150405") | relLangURL }}" alt="Cover image" loading="lazy" class="w-full m-0">
-			  {{ end }}
+					{{ $title := replaceRE "[^a-zA-Z0-9]+" "-" .Title | lower }}
+					<img src="{{ printf "%s/%s/%s-cover.jpg" .Section $title .Params.i | relLangURL }}" alt="Cover image" loading="lazy" class="w-full m-0">
+				{{ end }}
 				<p>{{ .Summary }}</p>
 				<a href="{{ .RelPermalink }}" class="text-accent"><span>Read more</span></a>
 				<!-- loop pages end -->
