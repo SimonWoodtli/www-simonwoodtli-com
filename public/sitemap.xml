@@ -2,13 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/a/</loc>
-    <lastmod>2023-11-09T07:43:50-06:00</lastmod>
+    <loc>https://simonwoodtli.com/</loc>
+    <lastmod>2023-12-05T15:25:19+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/</loc>
+    <loc>https://simonwoodtli.com/posts/</loc>
+    <lastmod>2023-12-05T15:25:19+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/</loc>
+    <loc>https://simonwoodtli.com/posts/this-is-my-first-/posts-entry/</loc>
+    <lastmod>2023-12-05T15:25:19+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>https://simonwoodtli.com/tags/devops/</loc>
+    <lastmod>2023-12-05T15:25:13+00:00</lastmod>
+  </url><url>
+    <loc>https://simonwoodtli.com/links/</loc>
+    <lastmod>2023-12-05T15:25:13+00:00</lastmod>
+  </url><url>
+    <loc>https://simonwoodtli.com/tags/linux/</loc>
+    <lastmod>2023-12-05T15:25:13+00:00</lastmod>
+  </url><url>
+    <loc>https://simonwoodtli.com/tags/</loc>
+    <lastmod>2023-12-05T15:25:13+00:00</lastmod>
+  </url><url>
+    <loc>https://simonwoodtli.com/links/this-is-the-title-of-first-/links-post/</loc>
+    <lastmod>2023-12-05T15:25:13+00:00</lastmod>
+  </url><url>
+    <loc>https://simonwoodtli.com/archive/</loc>
+    <lastmod>2023-12-05T02:42:05+00:00</lastmod>
   </url>
 </urlset>

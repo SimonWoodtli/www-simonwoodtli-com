@@ -1,0 +1,33 @@
+<!-- Get uuid param from when you call shortcode -->
+{{ $uuid := .Get "uuid" }}
+<!-- Get alt param from when you call shortcode -->
+{{ $alt := .Get "alt" }}
+<!-- Get title or slug of current page -->
+{{ $title := .Page.Title }}
+<!-- There is no way to direclty access the slug from within a
+  shortcode. Either you pass the slug in when you call the shortcode
+  like with uuid&alt as in 'slug=".. .Slug .."'. Which is annoying. Or
+  you convert the Title string into a slug. The latter makes mores sense
+  to me.-->
+{{ $slug := replaceRE "[^a-zA-Z0-9]+" "-" $title | lower }}
+<!-- Get section of current page -->
+{{ $section := .Page.Section }}
+<!-- Get index from front matter of current page -->
+{{ $index := .Page.Params.i }}
+
+<!-- If uuid is set to cover, set alt to 'Cover Image' -->
+{{ if eq $uuid "cover" }}
+ {{ $alt = "Cover image" }}
+{{ end }}
+
+<!-- If alt is not provided, set it to default value -->
+{{ if not $alt }}
+ {{ $alt = "Sorry, forgot to give the img a description" }}
+{{ end }}
+
+<!-- Generate image filename with date stamp and uuid -->
+{{ $image := printf "%s-%s.jpg" $index $uuid }}
+<!-- Get file path -->
+{{ $file := path.Join $section $slug $image }}
+<!-- Generate img tag -->
+<img src="{{ $file | relURL }}" alt="{{ $alt }}" loading="lazy" class="w-full m-0">

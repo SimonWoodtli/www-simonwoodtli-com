@@ -1,5 +1,31 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <p>This is the single template</p>
-  {{ .Content }}
+<main class="mx-auto w-[45rem]">
+	<p>HEY THIS IS _default/single.html</p>
+	<article>
+		<!-- TODO title if section links should be external link with icon-->
+		<h1>{{ .Title }}</h1>
+		<time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}">{{ .Date | time.Format "Monday, Jan 2, 2006" }}</time>
+
+		{{ with .Params.tags }}
+		<ul id="tags">
+			{{ range . }}
+			<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+			{{ end }}
+		</ul>
+		{{ end }}
+
+		<section>
+			{{ .Content }}
+		</section>
+
+
+		<!-- TODO same idea with if section links but then make the title become a clickable link to external link -->
+		<!-- If Section is Links add a 'externnal-link' Link to click on to get to linkUrl -->
+		{{ if eq .Section "links" }}
+		<a href="{{ .Params.linkUrl }}">External Link</a>
+		{{ end }}
+
+
+	</article>
+</main>
 {{ end }}

@@ -33,7 +33,7 @@
     <!-- FIXME on mobile phones touching the btn has a blue trigger animation, rm that (only chroome, firefox does not)-->
     <aside id="sidebarMobile" class="xl:hidden fixed inset-y-0 left-0
       w-[18.5rem] transform -translate-x-full transition duration-300
-      ease-in-out flex flex-col bg-secondary">
+      ease-in-out flex flex-col bg-secondary z-10">
       {{ partial "sidebarMobile.html" . }}
     </aside>
 
@@ -44,8 +44,6 @@
     <section class="grow 2xl:mx-[7rem] xl:mx-[4.5rem] md:mx-[3.5rem] mx-[1.75rem]">
       {{ partial "header.html" . }}
       {{ block "main" . }}{{ end }}
-      <p class="">Bottom of baseof</p>
-      <hr>
     </section>
 
     {{ $js := resources.Get "js/main.js" }}

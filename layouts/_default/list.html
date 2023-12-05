@@ -1,19 +1,58 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <p>This is the list template</p>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-  {{ end }}
-  <div class="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-    <div>
-      <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
-        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
-      </span>
-    </div>
-    <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
-    <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-      The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
-    </p>
-  </div>
+{{ $pages := .Pages }}
+<!-- _default/list.html is used by homepage, posts/ and links/ -->
+
+ <!-- if on homepage filter entries of type blog (which includes
+	 posts&links) by most recent date. -->
+{{ if .IsHome }}
+	{{ $pages = where .Site.Pages.ByDate.Reverse "Type" "eq" "blog" }}
+{{ else if eq .Section "posts" }}
+	<!-- .Site.Pages includes parent folder content/posts as entry, just .Pages only shows children of it -->
+  {{ $pages = where .Pages.ByDate.Reverse "Section" "eq" "posts" }}
+{{ else if eq .Section "links" }}
+  {{ $pages = where .Pages.ByDate.Reverse "Section" "eq" "links" }}
+{{ end }}
+
+
+ <!-- fix for double entries with pagination, also 15 entries/page
+	 instead of 30 (set in hugo.toml for tags) -->
+ {{ $paginator := .Paginate $pages 15 }}
+
+	<div class="mx-auto max-w-[45rem]">
+		<section>
+			<p>Welcome to my blog</p>
+		</section>
+		<main>
+			<!-- loop pages start -->
+			{{ range $paginator.Pages }}
+				<article>
+				<h2><a href="{{ if eq .Section "links" }}{{ .Params.linkUrl }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .LinkTitle }}</a></h2>
+				<time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}">{{ .Date | time.Format "Monday, Jan 2, 2006" }}</time>
+
+				<!-- loop tags start -->
+				{{ with .Params.tags }}
+				<ul id="tags">
+					{{ range . }}
+					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+					{{ end }}
+				</ul>
+				<!-- loop tags end -->
+				{{ end }}
+				<!-- If post contains cover img display it-->
+				{{ if .Params.cover }}
+				 {{ with .Resources.GetMatch "*-cover.jpg" }}
+				 <img src="{{ .RelPermalink }}" alt="Cover image" loading="lazy" class="w-full m-0">
+				 {{ end }}
+				 <!--TODO find a way to make the printf way to get cover jpg work, or maybe just use the resources find method -->
+				<img src="{{ printf "%s/%s/%s-cover.jpg" .Section .Slug (.Page.Date.Format "20060102150405") | relLangURL }}" alt="Cover image" loading="lazy" class="w-full m-0">
+			  {{ end }}
+				<p>{{ .Summary }}</p>
+				<a href="{{ .RelPermalink }}" class="text-accent"><span>Read more</span></a>
+				<!-- loop pages end -->
+				</article>
+			{{ end }}
+		</main>
+		<!-- next/prev links -->
+		{{ partial "pagination.html" . }}
+	</div>
 {{ end }}
