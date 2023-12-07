@@ -1,5 +1,5 @@
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = "Simon's Website"
 description = "My personal blog website"
 source = "https://github.com/SimonWoodtli/simonwoodtli.com/"
 baseURL = 'https://simonwoodtli.com/'
