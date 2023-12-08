@@ -705,8 +705,17 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .mb-12 {
   margin-bottom: 3rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
 }
 
 .mb-2 {
@@ -725,8 +734,8 @@ video {
   margin-left: 0px;
 }
 
-.ml-4 {
-  margin-left: 1rem;
+.ml-3 {
+  margin-left: 0.75rem;
 }
 
 .mr-4 {
@@ -775,6 +784,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .hidden {
@@ -893,6 +906,10 @@ video {
   list-style-type: disc;
 }
 
+.grid-cols-\[auto_1fr\] {
+  grid-template-columns: auto 1fr;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -903,10 +920,6 @@ video {
 
 .flex-wrap {
   flex-wrap: wrap;
-}
-
-.place-items-end {
-  place-items: end;
 }
 
 .items-end {
@@ -927,6 +940,10 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .gap-x-2 {
@@ -1011,6 +1028,10 @@ video {
   border-bottom-width: 3px;
 }
 
+.border-t-\[1px\] {
+  border-top-width: 1px;
+}
+
 .border-dashed {
   border-style: dashed;
 }
@@ -1041,10 +1062,6 @@ video {
 
 .border-opacity-50 {
   --tw-border-opacity: 0.5;
-}
-
-.border-opacity-80 {
-  --tw-border-opacity: 0.8;
 }
 
 .bg-primary {
@@ -1135,12 +1152,12 @@ video {
   padding-bottom: 1rem;
 }
 
-.pl-2 {
-  padding-left: 0.5rem;
+.pb-8 {
+  padding-bottom: 2rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
+.pl-2 {
+  padding-left: 0.5rem;
 }
 
 .pl-9 {
@@ -1159,12 +1176,20 @@ video {
   padding-right: 1rem;
 }
 
+.pt-16 {
+  padding-top: 4rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
 }
 
 .align-top {
   vertical-align: top;
+}
+
+.align-text-bottom {
+  vertical-align: text-bottom;
 }
 
 .text-base {
@@ -1265,6 +1290,14 @@ video {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.marker\:text-muted *::marker {
+  color: rgb(var(--color-text-muted) );
+}
+
+.marker\:text-muted::marker {
+  color: rgb(var(--color-text-muted) );
 }
 
 .placeholder\:italic::-moz-placeholder {
@@ -1400,8 +1433,8 @@ video {
     margin-left: 0.5rem;
   }
 
-  .md\:mt-20 {
-    margin-top: 5rem;
+  .md\:ml-8 {
+    margin-left: 2rem;
   }
 
   .md\:mt-24 {
@@ -1432,16 +1465,16 @@ video {
     flex-direction: row;
   }
 
+  .md\:gap-6 {
+    gap: 1.5rem;
+  }
+
   .md\:place-self-end {
     place-self: end;
   }
 
   .md\:self-center {
     align-self: center;
-  }
-
-  .md\:border-l-4 {
-    border-left-width: 4px;
   }
 
   .md\:border-l-\[0\.2rem\] {
@@ -1515,6 +1548,10 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:align-bottom {
+    vertical-align: bottom;
+  }
+
   .lg\:align-text-bottom {
     vertical-align: text-bottom;
   }
