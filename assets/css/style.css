@@ -876,10 +876,6 @@ video {
   min-width: min-content;
 }
 
-.max-w-\[45rem\] {
-  max-width: 45rem;
-}
-
 .max-w-\[48rem\] {
   max-width: 48rem;
 }
@@ -1529,6 +1525,11 @@ video {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .after\:md\:block::after {
