@@ -1,23 +1,40 @@
 {{ define "main" }}
 <!-- this page is for content on simonwoodtli.com/tags/foo -->
-<main class="mx-auto max-w-[45rem] md:mt-24 mt-16 md:bg-secondary
-    bg-primary md:border-l-4 md:border-solid border-hidden
-    border-tertiary border-opacity-80 py-8jj">
+<div class="relative mx-auto max-w-[48rem] md:mt-24 mt-16 md:bg-secondary md:bg-opacity-50 bg-primary md:border-l-[0.2rem] md:border-solid border-hidden border-tertiary border-opacity-50 py-8 after:bg-primary">
+  <!-- page right corner rectangle -->
+  <div class="after:absolute after:hidden after:md:block after:top-0 after:right-0 after:bg-primary after:border-t-[1.5rem] after:border-l-[1.5rem] after:border-l-accent after:border-t-transparent"></div>
 
-<h1>#{{ .Title }}</h1>
-<a href="/tags">To all tags</a>
+  <main class="2xl:mx-[2.375rem] md:mx-[1.5rem] mx-0">
+    <!-- title -->
+    <div class="inline-block border-accent border-b-[3px] pr-4 pb-3 mb-16">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24
+        24" stroke-width="1.5" stroke="currentColor" class="inline-block 2xl:w-8 2xl:h-8 md:w-7 md:h-7 w-6 h-6 mr-4 fill-secondary lg:align-bottom align-text-bottom">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+      </svg>
+      <h1 class="inline-block font-bold 2xl:text-3xl md:text-2xl text-xl">#{{ .Title }}</h1>
+    </div>
 
-{{ range (.Paginate .Pages).Pages }}
-<ul class="pl-4 ml-4 list-disc">
-  <li class="flex gap-x-4">
-    <time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}"
-        class="">{{ .Date.Format "2006-01-02" }}</time>
-    <h1 class=""><a class="" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h1>
-  </li>
-</ul>
-{{ end }}
+    <!-- tag date - title entries -->
+    {{ range (.Paginate .Pages).Pages }}
+    <ul class="text-md list-disc marker:text-muted md:ml-8 ml-3">
+      <li>
+        <div class="grid grid-cols-[auto_1fr] md:gap-6 gap-4">
+          <time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{
+            .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{
+            .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{
+          .Date.Format "date:2006-01-02" }}" class="text-muted">{{ .Date.Format "2006-01-02" }}</time>
+          <h3 class="inline-block"><a class="underline hover:decoration-accent" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h3>
+        </div>
+      </li>
+    </ul>
+    {{ end }}
+    <a class="inline-block 2xl:text-lg text-md text-accent font-bold underline hover:no-underline
+      my-8"href="/tags">Show all Tags</a>
 
-{{ partial "pagination.html" . }}
-</main>
+    <!-- footer -->
+    {{ partial "paginateList.html" . }}
+  </main>
+</div>
 
 {{ end }}

@@ -1,0 +1,9 @@
+<footer class="border-t-[1px] pt-16 pb-8 text-muted">
+{{ if .Paginator.HasPrev }}
+<a class="underline hover:decoration-accent before:content-['<']" href="{{ .Paginator.Prev.URL }}"> Previous Page</a>
+{{ end }}
+{{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}
+{{ if .Paginator.HasNext }}
+<a class="underline hover:decoration-accent after:content-['>']" href="{{ .Paginator.Next.URL }}">Next Page </a>
+{{ end }}
+</footer>

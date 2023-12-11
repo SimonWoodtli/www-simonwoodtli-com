@@ -1,24 +1,37 @@
 {{ define "main" }}
+{{ $posts := .Site.GetPage "section" "posts" }}
+{{ $links := .Site.GetPage "section" "links" }}
+{{ $pages := append $posts.Data.Pages $links.Data.Pages }}
+<div class="relative mx-auto max-w-[48rem] md:mt-24 mt-16 md:bg-secondary md:bg-opacity-50 bg-primary md:border-l-[0.2rem] md:border-solid border-hidden border-tertiary border-opacity-50 py-8 after:bg-primary">
+  <!-- page right corner rectangle -->
+  <div class="after:absolute after:hidden after:md:block after:top-0 after:right-0 after:bg-primary after:border-t-[1.5rem] after:border-l-[1.5rem] after:border-l-accent after:border-t-transparent"></div>
 
-<div class="mx-auto max-w-[45rem]">
-  <section>
-    <h1>THIS IS THE ARCHIVE</h1>
-  </section>
+  <main class="2xl:mx-[2.375rem] md:mx-[1.5rem] mx-0 mb-16">
 
-  <main>
+    <!-- title -->
+    <div class="inline-block border-accent border-b-[3px] pr-4 pb-3 mb-8">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-block 2xl:w-8 2xl:h-8 md:w-7 md:h-7 w-6 h-6 mr-4 fill-secondary lg:align-bottom align-text-bottom">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+      </svg>
+      <h1 class="inline-block font-bold 2xl:text-3xl md:text-2xl text-xl">Archive</h1>
+    </div>
+
+
     <!-- loop pages start -->
-
-    {{ $posts := .Site.GetPage "section" "posts" }}
-    {{ $links := .Site.GetPage "section" "links" }}
-    {{ $pages := append $posts.Data.Pages $links.Data.Pages }}
-
     {{ range $pages.GroupByDate "2006" }}
-    <h1>{{ .Key }}</h1>
+    <h2 class="font-bold md:text-xl text-lg my-8">{{ .Key }}</h1>
+
     {{ range .Pages }}
-    <ul class="list-disc">
+    <ul class="text-md list-disc marker:text-muted md:ml-8 ml-3">
       <li>
-        <time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <div class="grid grid-cols-[auto_1fr] md:gap-6 gap-4">
+          <time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{
+            .Date.Format "2006-01-02T15:04:05Z" }}"
+            data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}"
+          data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}"
+          class="text-muted">{{ .Date.Format "2006-01-02" }}</time>
+          <h3 class="inline-block"><a class="underline hover:decoration-accent" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+        </div>
       </li>
     </ul>
     {{ end }}
