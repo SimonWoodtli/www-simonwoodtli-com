@@ -28,7 +28,7 @@
 		<!-- loop pages start -->
 		{{ range $paginator.Pages }}
     <article class="mb-8">
-			<h2 class="inline-block 2xl:text-2xl text-xl decoration-1 hover:underline uppercase font-bold mb-4">
+			<h2 class="inline-block 2xl:text-2xl text-xl decoration-1 hover:underline uppercase font-bold mb-8">
 				<a class="" href="{{ if eq .Section "links" }}{{ .Params.linkUrl }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .LinkTitle }}
 				{{ if eq .Section "links" }}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -66,16 +66,20 @@
 			<!-- loop tags end -->
 			{{ end }}
 
+			<p class="leading-relaxed my-2">{{ .Summary }}</p>
+			<a href="{{ .RelPermalink }}" class="inline-block underline
+				hover:no-underline font-bold text-accent"><span>Read more</span></a>
+			<!-- Not sure if I want that h rule or not 
+			<div class="border-b border-dashed border-muted"></div>-->
+
 			<!-- If post contains cover img display it-->
 			{{ if .Params.cover }}
 		  {{ $title := replaceRE "[^a-zA-Z0-9]+" "-" .Title | lower }}
-			<img src="{{ printf "%s/%s/%s-cover.jpg" .Section $title .Params.i | relLangURL }}" alt="Cover image" loading="lazy" class="w-full m-0">
+			<img src="{{ printf "%s/%s/%s-cover.jpg" .Section $title .Params.i
+			| relLangURL }}" alt="Cover image" loading="lazy" class="w-full
+			mt-6">
 			{{ end }}
-			<p class="leading-relaxed my-2">{{ .Summary }}</p>
-			<a href="{{ .RelPermalink }}" class="inline-block underline
-				hover:no-underline mb-2 font-bold text-accent"><span>Read more</span></a>
-			<!-- Not sure if I want that h rule or not -->
-			<div class="border-b border-dashed border-muted"></div>
+			
     </article>
 		<!-- loop pages end -->
 		{{ end }}
