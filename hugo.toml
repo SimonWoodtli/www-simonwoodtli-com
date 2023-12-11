@@ -19,3 +19,8 @@ paginate = 30
  [permalinks.page]
   posts = '/posts/:slug/'
   links = '/links/:slug/'
+
+# Syntax higlighting from builtin chroma
+[markup]
+  [markup.highlight]
+    noclasses = false

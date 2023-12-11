@@ -1,0 +1,18 @@
+{{ if or .Next .Prev -}}
+<footer class="flex justify-between border-t-[1px] pt-16 pb-8">
+	<!-- FIX extra long titles should not go until middle but have fixed width -->
+	{{- with .Prev }}
+	<a class="flex flex-col max-w-[19rem] group text-muted" href="{{ .RelPermalink}}">
+		<span class="md:hover:text-current hover:text-accent md:no-underline underline">Previous Post:</span>
+		<h4 class="md:block hidden group-hover:text-accent underline">{{ .Title }}</h4>
+	</a>
+	{{ end -}}
+
+	{{- with .Next -}}
+	<a class="flex flex-col max-w-[19rem] group text-muted" href="{{ .RelPermalink}}">
+		<span class="md:hover:text-current hover:text-accent md:no-underline underline self-end">Next Post:</span>
+		<h4 class="md:block hidden text-right group-hover:text-accent underline">{{ .Title }}</h4>
+	</a>
+	{{ end -}}
+</footer>
+{{ end -}}

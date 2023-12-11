@@ -1,31 +1,65 @@
 {{ define "main" }}
-<main class="mx-auto w-[45rem]">
-	<p>HEY THIS IS _default/single.html</p>
-	<article>
-		<!-- TODO title if section links should be external link with icon-->
-		<h1>{{ .Title }}</h1>
-		<time pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}">{{ .Date | time.Format "Monday, Jan 2, 2006" }}</time>
+<!-- TODO add searchable single pages with `pagefind` -->
 
-		{{ with .Params.tags }}
-		<ul id="tags">
-			{{ range . }}
-			<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+<div class="relative mx-auto max-w-[48rem] md:mt-24 mt-16 md:bg-secondary md:bg-opacity-50 bg-primary md:border-l-[0.2rem] md:border-solid border-hidden border-tertiary border-opacity-50 py-8 after:bg-primary">
+	<!-- page right corner rectangle -->
+	<div class="after:absolute after:hidden after:md:block after:top-0 after:right-0 after:bg-primary after:border-t-[1.5rem] after:border-l-[1.5rem] after:border-l-accent after:border-t-transparent"></div>
+
+	<div class="2xl:mx-[2.375rem] md:mx-[1.5rem] mx-0">
+		<article class="mb-8">
+			<!-- title -->
+			{{ if eq .Section "links" }}
+			<h1 class="inline-block 2xl:text-2xl text-xl decoration-1 hover:underline uppercase font-bold mb-4">
+			<a class="inline-block" href="{{ .Params.linkUrl }}">
+				{{ .Title }}
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+					fill="currentColor" class="inline-block 2xl:w-7 2xl:h-7 w-6 h-6 lg:align-text-bottom align-top fill-muted hover:fill-accent md:ml-2 ml-0">
+					<path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z" clip-rule="evenodd" />
+				</svg>
+			</a>
+		  </h1>
+			{{ else }}
+			<h1 class="uppercase font-bold 2xl:text-2xl text-xl mb-4">{{ .Title }}<h1>
 			{{ end }}
-		</ul>
-		{{ end }}
-
-		<section>
-			{{ .Content }}
-		</section>
-
-
-		<!-- TODO same idea with if section links but then make the title become a clickable link to external link -->
-		<!-- If Section is Links add a 'externnal-link' Link to click on to get to linkUrl -->
-		{{ if eq .Section "links" }}
-		<a href="{{ .Params.linkUrl }}">External Link</a>
-		{{ end }}
-
-
-	</article>
-</main>
+			<!-- date and tags -->
+			<!-- date -->
+			<div class="grid md:grid-cols-[auto_1fr] grid-cols-1">
+				<div class="flex gap-2">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="md:w-5 md:h-5 w-4 h-4 fill-muted">
+					 <path d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12z" />
+					 <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
+					</svg>
+					<time class="md:text-sm text-xs text-muted md:after:content-['|'] md:after:pl-3" pubdate="{{ .Date.Format "2006-01-02" }}" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}" data-pagefind-meta="{{ .Date.Format "date:2006-01-02" }}" data-pagefind-sort="{{ .Date.Format "date:2006-01-02" }}">{{ .Date | time.Format "Monday, Jan 2, 2006" }}</time>
+				</div>
+				<!-- tags -->
+				<nav class="md:ml-2">
+					{{ with .Params.tags }}
+					<ul class="inline-flex flex-wrap gap-x-2">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+							fill="currentColor" class="inline-block md:w-5 md:h-5 w-4 h-4 fill-muted">
+							<path fill-rule="evenodd" d="M5.5 3A2.5 2.5 0 003 5.5v2.879a2.5 2.5 0 00.732 1.767l6.5 6.5a2.5 2.5 0 003.536 0l2.878-2.878a2.5 2.5 0 000-3.536l-6.5-6.5A2.5 2.5 0 008.38 3H5.5zM6 7a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+						</svg>
+						{{ range . }}
+						<li class="md:text-sm text-xs text-muted"><a class="hover:decoration-accent hover:underline" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}</a></li>
+						{{ end }}
+					</ul>
+					{{ end }}
+				</nav>
+			</div>
+			<!-- markdown content -->
+			<main class="max-w-none grid grid-cols-1 prose
+			prose-img:text-regular prose-p:text-regular
+				prose-li:text-regular prose-li:marker:text-muted
+				prose-headings:text-regular prose-headings:font-bold
+				prose-headings:uppercase prose-h2:2xl:text-2xl
+				prose-h2:text-xl prose-h3:2xl:text-xl prose-h3:text-lg
+				prose-h4:2xl:text-lg prose-h4:text-base prose-a:text-muted
+				hover:prose-a:no-underline prose-pre:bg-tertiary">
+				{{ .Content }}
+			</main>
+		</article>
+		<!-- footer -->
+		{{ partial "paginateSingle.html" . }}
+	</div>
+</div>
 {{ end }}
