@@ -2351,6 +2351,11 @@ video {
   font-style: italic;
 }
 
+.before\:content-\[\'\<\'\]::before {
+  --tw-content: '<';
+  content: var(--tw-content);
+}
+
 .after\:absolute::after {
   content: var(--tw-content);
   position: absolute;
@@ -2396,6 +2401,11 @@ video {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(var(--color-bg-primary) / var(--tw-bg-opacity));
+}
+
+.after\:content-\[\'\>\'\]::after {
+  --tw-content: '>';
+  content: var(--tw-content);
 }
 
 .hover\:bg-tertiary:hover {
