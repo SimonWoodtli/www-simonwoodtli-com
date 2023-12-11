@@ -39,7 +39,6 @@
 				{{ end }}
 				</a>
 			</h2>
-
 			<!-- date and tags -->
 			<div class="grid md:grid-cols-[auto_1fr] grid-cols-1">
 				<div class="flex gap-2">
@@ -66,12 +65,13 @@
 			<!-- loop tags end -->
 			{{ end }}
 
+			<!-- markdown content summary -->
 			<p class="leading-relaxed my-2">{{ .Summary }}</p>
+			<!-- TODO Read More link: make it more interesting by having
+		 multiple texts that can appear 'read more', 'Want to know more'
+		 etc. -->
 			<a href="{{ .RelPermalink }}" class="inline-block underline
 				hover:no-underline font-bold text-accent"><span>Read more</span></a>
-			<!-- Not sure if I want that h rule or not 
-			<div class="border-b border-dashed border-muted"></div>-->
-
 			<!-- If post contains cover img display it-->
 			{{ if .Params.cover }}
 		  {{ $title := replaceRE "[^a-zA-Z0-9]+" "-" .Title | lower }}
@@ -79,7 +79,6 @@
 			| relLangURL }}" alt="Cover image" loading="lazy" class="w-full
 			mt-6">
 			{{ end }}
-			
     </article>
 		<!-- loop pages end -->
 		{{ end }}
