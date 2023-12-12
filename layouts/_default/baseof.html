@@ -13,6 +13,8 @@
     <!-- Tailwind CSS -->
     {{ $style := resources.Get "css/style.css" }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+    <!-- pagefind -->
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
   </head>
   <body class="flex flex-row justify-between relative bg-primary text-regular">
     <!-- since two sidebars used 'fixed' instead of 'absolute' -->

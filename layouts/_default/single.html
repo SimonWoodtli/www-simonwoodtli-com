@@ -1,15 +1,13 @@
 {{ define "main" }}
-<!-- TODO add searchable single pages with `pagefind` -->
-
 <div class="relative mx-auto max-w-[48rem] md:mt-24 mt-16 md:bg-secondary md:bg-opacity-50 bg-primary md:border-l-[0.2rem] md:border-solid border-hidden border-tertiary border-opacity-50 py-8 after:bg-primary">
 	<!-- page right corner rectangle -->
 	<div class="after:absolute after:hidden after:md:block after:top-0 after:right-0 after:bg-primary after:border-t-[1.5rem] after:border-l-[1.5rem] after:border-l-accent after:border-t-transparent"></div>
 
 	<div class="2xl:mx-[2.375rem] md:mx-[1.5rem] mx-0">
-		<article class="mb-8">
+		<article data-pagefind-body class="mb-8">
 			<!-- title -->
 			{{ if eq .Section "links" }}
-			<h1 class="inline-block 2xl:text-2xl text-xl decoration-1 hover:underline uppercase font-bold mb-4">
+			<h1 data-pagefind-meta="title" class="inline-block 2xl:text-2xl text-xl decoration-1 hover:underline uppercase font-bold mb-4">
 			<a class="inline-block" href="{{ .Params.linkUrl }}">
 				{{ .Title }}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -19,7 +17,7 @@
 			</a>
 		  </h1>
 			{{ else }}
-			<h1 class="uppercase font-bold 2xl:text-2xl text-xl mb-4">{{ .Title }}<h1>
+			<h1 data-pagefind-meta="title" class="uppercase font-bold 2xl:text-2xl text-xl mb-4">{{ .Title }}<h1>
 			{{ end }}
 			<!-- date and tags -->
 			<!-- date -->
@@ -40,7 +38,7 @@
 							<path fill-rule="evenodd" d="M5.5 3A2.5 2.5 0 003 5.5v2.879a2.5 2.5 0 00.732 1.767l6.5 6.5a2.5 2.5 0 003.536 0l2.878-2.878a2.5 2.5 0 000-3.536l-6.5-6.5A2.5 2.5 0 008.38 3H5.5zM6 7a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
 						</svg>
 						{{ range . }}
-						<li class="md:text-sm text-xs text-muted"><a class="hover:decoration-accent hover:underline" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}</a></li>
+						<li data-pagefind-filter="character" class="md:text-sm text-xs text-muted"><a class="hover:decoration-accent hover:underline" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}</a></li>
 						{{ end }}
 					</ul>
 					{{ end }}
