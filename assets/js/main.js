@@ -34,29 +34,23 @@ darkModeToggle.addEventListener('click', () => {
 // ------------------------------ Sidebar -----------------------------
 //const isRetina = () => window.devicePixelRatio > 1;
 //TODO make an animation for closing/opening svg, right now just simple
-const btnSidebar = document.querySelector('#btnSidebar');
-const svgSidebar = document.querySelector('#svgSidebar');
-const svgSidebarPath = svgSidebar.querySelector('path');
 const sidebar = document.querySelector('#sidebar');
-
-const btnSidebarMobile = document.querySelector('#btnSidebarMobile');
+const btnSidebar = document.querySelector('#btnSidebar');
+const svgSidebarDesktop = document.querySelector('#svgSidebarDesktop');
 const svgSidebarMobile = document.querySelector('#svgSidebarMobile');
-const svgSidebarMobilePath = svgSidebarMobile.querySelector('path');
-const sidebarMobile = document.querySelector('#sidebarMobile');
-
-btnSidebarMobile.addEventListener('click', (e) => {
-  //toggle between hamburger and X:
-  svgSidebarMobilePath.setAttribute('d', svgSidebarMobilePath.getAttribute('d') === 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' ? 'M6 18L18 6M6 6l12 12' : 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5');
-  //initiate closing/opening:
-  sidebarMobile.classList.toggle('-translate-x-full')
-})
 
 btnSidebar.addEventListener('click', (e) => {
   //TODO try to solve this without the setTimout() func
-  sidebar.classList.toggle('xl:translate-x-0')
-  //delay toggle hiddden for smoothing out slidebar open/close animation:
-  //setTimeout(() => { sidebar.classList.toggle('xl:relative')}, 100 )
-  setTimeout(() => { document.querySelector("#layoutFix").classList.toggle("hidden") }, 100 )
-  //change btn:
-  svgSidebarPath.setAttribute('d', svgSidebarPath.getAttribute('d') === 'M6 18L18 6M6 6l12 12' ? 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' : 'M6 18L18 6M6 6l12 12');
+  const width = window.innerWidth
+  if (width > 1280) {
+    sidebar.classList.toggle('xl:translate-x-0')
+    //delay for smoothing out slidebar open/close animation:
+    setTimeout(() => { sidebar.classList.toggle('xl:sticky') }, 150 )
+    //change btn:
+    svgSidebarDesktop.setAttribute('d', svgSidebarDesktop.getAttribute('d') === 'M6 18L18 6M6 6l12 12' ? 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' : 'M6 18L18 6M6 6l12 12');
+  } else {
+    sidebar.classList.toggle('translate-x-0')
+    //change btn:
+    svgSidebarMobile.setAttribute('d', svgSidebarMobile.getAttribute('d') === 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' ? 'M6 18L18 6M6 6l12 12' : 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5');
+  }
 })

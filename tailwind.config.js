@@ -4,7 +4,7 @@
 
 module.exports = {
   content: ["content/**/*.md", "./layouts/**/*.html"],
-  safelist: ['theme-dark', 'hidden', '-translate-x-full', 'translate-x-0', ],
+  safelist: ['theme-dark', 'translate-x-0' ],
   theme: {
     extend: {
       colors: {
