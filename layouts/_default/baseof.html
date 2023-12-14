@@ -1,51 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ or .Site.LanguageCode .Site.Language.Lang }}">
   <head>
-    <!-- Content Type -->
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
     <title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
-
-    <!-- favicon -->
     {{ $favicon := resources.Get "img/favicon.ico" }}
-    <link rel="icon" href="{{ $favicon.RelPermalink }}" />
-    <!-- Tailwind CSS -->
+    <link rel="icon" href="{{ $favicon.RelPermalink }}" /><!-- favicon -->
     {{ $style := resources.Get "css/style.css" }}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" /><!-- tailwind -->
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet"><!-- pagefind -->
   </head>
-  <body class="flex flex-row justify-between relative bg-primary text-regular">
-    <!-- since two sidebars used 'fixed' instead of 'absolute' -->
+  <body class="flex justify-content relative bg-primary text-regular">
     <!-- 'absolute inset-y-0 left-0' together with 'transform
       -translate-x-full' to make it offcanvas sidebar, in other words
       by default the sidebar is outside of the canvas -->
     <!-- 'transition duration-300 ease-in-out' for the animation when burger toggled -->
-    <!-- 'xl:relative absolute' to make it behave like a slidebar that
-      moves main content on desktop. And on mobile like a pop up navigation-->
-    <!-- TODO merge both sideBars into one, should now be possible -->
-    <div id="layoutFix" class="2xl:w-[25rem] xl:w-[20rem] w-0"></div><!-- FIX for having a sliding sidebar combo with pop navbar AND scrollable -->
-    <aside id="sidebar" class="xl-relative xl:block hidden fixed md:inset-y-0 md:left-0
+    <!-- 'xl:absolute fixed' to make it behave like a slidebar that
+      moves main content on desktop. And on mobile like a pop up navigation
+    'xl-sticky' because otherwise the desktop sidebar is empty if you
+    scroll main content. xl:h-screen to fix scrollable desktop sidebar-->
+
+    <!-- sidebar -->
+    <aside id="sidebar" class="xl:absolute xl:sticky fixed inset-y-0 left-0
     transform xl:translate-x-0 -translate-x-full transition duration-300 ease-in-out
-      2xl:w-[25rem] xl:w-[20rem] flex flex-col bg-secondary">
+      2xl:w-[25rem] xl:w-[20rem] w-[20rem] flex flex-col bg-secondary
+      z-10 xl:h-screen">
       {{ partial "sidebar.html" . }}
     </aside>
+    <!-- FIXME on mobile phones touching the btn has a blue trigger animation, rm that (only chrome, firefox does not)
 
-    <!-- FIXME on mobile phones touching the btn has a blue trigger animation, rm that (only chroome, firefox does not)-->
-    <aside id="sidebarMobile" class="xl:hidden fixed inset-y-0 left-0
-      w-[18.5rem] transform -translate-x-full transition duration-300
-      ease-in-out flex flex-col bg-secondary z-10">
-      {{ partial "sidebarMobile.html" . }}
-    </aside>
-
-    <!-- FIXME on phones if child elements overflow e.g. h1 with a
-      text-20xl. Then the left margin stays correct but it eats up the right margin.
-      Tried to use 'max-w-[calc(100% - 7rem)]' on container or prevent overflow on h1 'overflow-hidden whitespace-nowrap'
     <!-- content -->
-    <section class="grow 2xl:mx-[7rem] xl:mx-[4.5rem] md:mx-[3.5rem] mx-[1.75rem]">
+    <div class="grow 2xl:mx-[7rem] xl:mx-[4.5rem] md:mx-[3.5rem] mx-[1.75rem]">
       {{ partial "header.html" . }}
       {{ block "main" . }}{{ end }}
-    </section>
-
+    </div>
     {{ $js := resources.Get "js/main.js" }}
     <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
   </body>
