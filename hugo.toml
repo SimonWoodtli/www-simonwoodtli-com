@@ -43,10 +43,11 @@ rssLimit = 100
 
 [outputs]
 # Output HTML, and ATOM on Home
-home = ["HTML", "ATOM"]
+home = ["html", "atom"]
 # Output only HTML everywhere else
-section = ["HTML"]
-taxonomy = ["HTML"]
+section = ["html"]
+taxonomy = ["html"]
+term = ["html"]
 
 # Define a new ATOM output format
 [outputFormats]
