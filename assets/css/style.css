@@ -2407,9 +2407,8 @@ video {
   text-decoration-color: rgb(var(--color-text-accent) / 1);
 }
 
-.group:hover .group-hover\:text-accent {
-  --tw-text-opacity: 1;
-  color: rgb(var(--color-text-accent) / var(--tw-text-opacity));
+.group:hover .group-hover\:decoration-accent {
+  text-decoration-color: rgb(var(--color-text-accent) / 1);
 }
 
 .prose-headings\:font-bold :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
