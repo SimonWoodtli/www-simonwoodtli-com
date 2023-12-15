@@ -30,4 +30,4 @@
 <!-- Get file path -->
 {{ $file := path.Join $section $slug $image }}
 <!-- Generate img tag -->
-<img src="{{ $file | relURL }}" alt="{{ $alt }}" loading="lazy" class="w-full m-0">
+<img src="{{ $file | absURL }}" alt="{{ $alt }}" loading="lazy" class="w-full m-0">

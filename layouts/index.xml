@@ -1,0 +1,63 @@
+{{- $pages := where .Site.RegularPages "Type" "eq" "blog" -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ .Site.LanguageCode }}">
+  <title>{{ .Site.Title }}</title>
+  {{- with .Site.Params.brand.tagline }}
+  <subtitle>{{ . }}</subtitle>
+  {{- end }}
+  <id>{{ "/atom.xml" | absLangURL }}</id>
+  <author>
+    {{- with .Site.Params.author.name }}
+    <name>{{ . }}</name>
+    {{- end }}
+    {{- with .Site.Params.author.email}}
+    <email>{{ . }}</email>
+    {{- end }}
+    {{- with .Site.Params.author.uri }}
+    <uri>{{ . }}</uri>
+    {{- end }}
+  </author>
+  <category term="Software" />
+  <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
+  {{- with .Site.Copyright }}
+  <rights>{{ . }}</rights>
+  {{- end }}
+  {{- with .Site.Params.brand.icon }}
+  <icon>{{ . | absURL }}</icon>
+  {{- end }}
+  {{- with .Site.Params.brand.logo }}
+  <logo>{{ . | absURL }}</logo>
+  {{- end }}
+  <updated>{{ dateFormat "2006-01-02T15:04:05Z" now.UTC | safeHTML }}</updated>
+  {{- with .OutputFormats.Get "ATOM" }}
+  {{ printf `<link rel="self" type="%s" href="%s" hreflang="%s" title="Atom Feed" />` .MediaType.Type .Permalink $.Site.LanguageCode | safeHTML }}
+  {{- end }}
+  {{- range .AlternativeOutputFormats }}
+  {{ printf `<link rel="alternate" type="%s" href="%s" hreflang="%s" title="HTML" />` .MediaType.Type .Permalink $.Site.LanguageCode | safeHTML }}
+  {{- end }}
+  {{- range $pages }}
+  <entry>
+    <title type="text">{{ .Title }}</title>
+    <author>
+      {{- with .Site.Params.author.name }}
+      <name>{{ . }}</name>
+      {{- end }}
+      {{- with .Site.Params.author.uri }}
+      <uri>{{ . }}</uri>
+      {{- end }}
+    </author>
+    <id>{{ .Permalink }}</id>
+    <link rel="related" href="{{ .Permalink }}" hreflang="{{ .Site.LanguageCode }}" type="text/html" />
+    {{- if eq .Section "links" }}
+    <link rel="alternate" href="{{ .Params.linkUrl }}" type="text/html" />
+    {{- end }}
+    <updated>{{ dateFormat "2006-01-02T15:04:05Z" .Lastmod.UTC | safeHTML }}</updated>
+    <published>{{ dateFormat "2006-01-02T15:04:05Z" .Date.UTC | safeHTML }}</published>
+    {{ printf "<content type=\"html\"><![CDATA[%s]]></content>" .Content | safeHTML }}
+  </entry>
+  {{- end }}
+</feed>
