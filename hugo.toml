@@ -32,9 +32,9 @@ name = "Simon Woodtli"
 uri = "https://www.simonwoodtli.com/"
 email = "simonwoodtli@posteo.net"
 twitter = "simonwoodtlidev"
-image = "simonwoodtli.png"
+image = "simonwoodtli.jpg"
 [params.brand]
-tagline = "No place like 127.0.0.1"
+tagline = "Recent content on Simon's Blog"
 icon = "img/favicon.ico"
 logo = "img/logo.png"
 

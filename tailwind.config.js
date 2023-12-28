@@ -4,7 +4,7 @@
 
 module.exports = {
   content: ["content/**/*.md", "./layouts/**/*.html"],
-  safelist: ['theme-dark', 'translate-x-0' ],
+  safelist: ['theme-dark', 'translate-x-0', 'bottom-0', 'blur', 'outline-black', 'mt-2', 'justify-center', '2xl:w-[calc(100%/3-0.1875rem)]', 'lg:flex-row', 'lg:order-last' ],
   theme: {
     extend: {
       colors: {
@@ -13,10 +13,16 @@ module.exports = {
         'muted': 'rgb(var(--color-text-muted) / <alpha-value>)',
         'accent': 'rgb(var(--color-text-accent) / <alpha-value>)',
         'ringgray': 'rgb(var(--color-text-ringgray) / <alpha-value>)',
+        'imgOutline': 'rgb(var(--color-img-outline) / <alpha-value>)',
         'primary': 'rgb(var(--color-bg-primary) / <alpha-value>)',
         'secondary': 'rgb(var(--color-bg-secondary) / <alpha-value>)',
         'tertiary': 'rgb(var(--color-bg-tertiary) / <alpha-value>)'
-      }
+
+      },
+      screens: {
+        '9x': '900px',
+        'xs': '376px'
+      },
     },
   },
 
