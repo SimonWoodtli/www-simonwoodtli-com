@@ -20,6 +20,7 @@
     --color-bg-primary: 255 255 255; /* white */
     --color-bg-secondary: 241 245 249; /* light gray */
     --color-bg-tertiary: 226 232 240; /* darker gray  */
+    --color-img-outline: var(--color-text-ringgray);
   }
 
   /* default dark theme: */
@@ -36,6 +37,7 @@
     --color-bg-primary: 40 40 40; /*gruvbox black*/
     --color-bg-secondary: 32 32 32; /*darker gruvbox black*/
     --color-bg-tertiary: 24 24 24; /* even darker black  */
+    --color-img-outline: var(--color-bg-tertiary);
 
   }
 }
