@@ -9,15 +9,15 @@ module.exports = {
     extend: {
       colors: {
         'regular': 'rgb(var(--color-text-regular) / <alpha-value>)',
+        'white': 'rgb(var(--color-text-white) / <alpha-value>)',
         'inverted': 'rgb(var(--color-text-inverted) / <alpha-value>)',
         'muted': 'rgb(var(--color-text-muted) / <alpha-value>)',
         'accent': 'rgb(var(--color-text-accent) / <alpha-value>)',
-        'ringgray': 'rgb(var(--color-text-ringgray) / <alpha-value>)',
         'imgOutline': 'rgb(var(--color-img-outline) / <alpha-value>)',
         'primary': 'rgb(var(--color-bg-primary) / <alpha-value>)',
         'secondary': 'rgb(var(--color-bg-secondary) / <alpha-value>)',
-        'tertiary': 'rgb(var(--color-bg-tertiary) / <alpha-value>)'
-
+        'tertiary': 'rgb(var(--color-bg-tertiary) / <alpha-value>)',
+        'quaternary': 'rgb(var(--color-bg-quaternary) / <alpha-value>)'
       },
       screens: {
         '9x': '900px',
