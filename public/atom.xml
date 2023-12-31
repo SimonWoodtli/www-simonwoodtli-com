@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+  <title>Simon&#39;s Website</title>
+  <subtitle>Recent content on Simon&#39;s Blog</subtitle>
+  <id>https://simonwoodtli.com/atom.xml</id>
+  <author>
+    <name>Simon Woodtli</name>
+    <email>simonwoodtli@posteo.net</email>
+    <uri>https://www.simonwoodtli.com/</uri>
+  </author>
+  <category term="Software" />
+  <generator uri="https://gohugo.io/" version="0.120.3">Hugo</generator>
+  <rights>Simon Woodtli - [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)</rights>
+  <icon>https://simonwoodtli.com/img/favicon.ico</icon>
+  <logo>https://simonwoodtli.com/img/logo.png</logo>
+  <updated>2023-12-31T19:09:34Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://simonwoodtli.com/atom.xml" hreflang="en-us" title="Atom Feed" />
+  <link rel="alternate" type="text/html" href="https://simonwoodtli.com/" hreflang="en-us" title="HTML" />
+  <entry>
+    <title type="text">Welcome to my blog - Why I chose this stack</title>
+    <author>
+      <name>Simon Woodtli</name>
+      <uri>https://www.simonwoodtli.com/</uri>
+    </author>
+    <id>https://simonwoodtli.com/posts/welcome-to-my-blog-why-i-chose-this-stack/</id>
+    <link rel="related" href="https://simonwoodtli.com/posts/welcome-to-my-blog-why-i-chose-this-stack/" hreflang="en-us" type="text/html" />
+    <updated>2023-12-31T14:43:55Z</updated>
+    <published>2023-12-31T14:43:55Z</published>
+    <content type="html"><![CDATA[<p>A few weeks ago, I decided to create my own blog. I also desperately needed a
+portfolio site to show my work and apply for a job. And I was reluctant to use
+a theme.</p>
+<p>So I researched what technologies would make the most sense to accomplish what
+what I wanted. I wanted to keep it simple and follow the Progressive
+Enhancement approach to achieve my goal.</p>
+<p><em><strong>What is Progressive Enhancement?</strong></em><br>
+Use the minimum required technology that is available and gets the job done.
+Only add more technologies if you need more features that cannot be achieved
+with the current stack. So start with the simplest technology that is
+sufficient for your goal.</p>
+<h3 id="blog-architecture">Blog Architecture</h3>
+<ul>
+<li>My blog should have a main feed where link posts and article posts should be aggregated on the homepage.</li>
+<li>Link posts are reaction posts to a quoted information on the web. They offer the bloggers take on it.</li>
+<li>Blog posts are written articles, essays or tutorials.</li>
+<li>A searchbar to search content from the blog.</li>
+<li>Tags to categorize the posts.</li>
+<li>Comments to interact with the content.</li>
+</ul>
+<p>Thanks John for inventing Blogs with link and blog posts: <a href="https://daringfireball.net/">https://daringfireball.net/</a></p>
+<h3 id="static-site-generators">Static Site Generators</h3>
+<p>Every modern blog that is created from scratch should nowadays use a static
+website generator. A static website is easier to deploy, easier to maintain
+and easier to create.</p>
+<p>In my <a href="https://jamstack.org/generators/">research</a> I narrowed the selection down to these three SSGs:</p>
+<p><em><strong>Astro</strong></em><br>
+I think with a more complex tech stack Astro would have been the better choice.
+It allows you to use JSX so it&rsquo;d be great to use together with a JS framework.</p>
+<p><em><strong>Zola</strong></em><br>
+I did not do that much research on it, but it seems to be a super cool product.
+However I am learning Go and Zola is written in Rust.</p>
+<p><em><strong>Hugo: My pick</strong></em><br>
+It&rsquo;s more widely adapted in the industry than Zola and because I can practice
+the arcane go template lang :)</p>
+<h3 id="css">CSS</h3>
+<p>After some research, I decided to have a closer look on these three candidates:</p>
+<p><em><strong>Vanilla CSS</strong></em><br>
+I&rsquo;ve played around with vanilla CSS enough to know that it&rsquo;s very time
+consuming to create a larger project from scratch.</p>
+<p><em><strong>Bulma CSS</strong></em><br>
+I think Bulma is great if you don&rsquo;t plan to create a custom design and use
+pre-built components.</p>
+<p><em><strong>Tailwind CSS: My pick</strong></em><br>
+Because it makes styling a project so much faster and allows for complete
+custom designs. It&rsquo;s a simple utility first framework that increases your
+productivity.</p>
+<h3 id="javascript">Javascript</h3>
+<p>These are some frontend frameworks that come to mind when choosing a stack:</p>
+<p><em><strong>Alpinejs</strong></em><br>
+Alpine is great it works really well with htmx. But my blog has no dynamic
+content. I think I might add it anyways in a future refactoring. Because it&rsquo;s
+also great to just use it to manage accessibility with it.</p>
+<p><em><strong>Vue|React|Svelte</strong></em><br>
+Many developers choose an over-engineered approach to create simple projects
+simply to demonstrate their skills in using a particular technology. I disagree
+with this philosophy. Choosing a stack with progressive enhancement in mind
+ensures that you don&rsquo;t accumulate technical debt unless it benefits the
+product.</p>
+<p><em><strong>Vanilla JS: My pick</strong></em><br>
+It is the simplest technology available for Webdev, and I had very few features
+in mind for this project.</p>
+<h3 id="comments">Comments</h3>
+<p>I was looking for an open source commenting system that was easy to maintain
+and simple to set up. These three were worthy contenders that I wanted to take
+a closer look at:</p>
+<p><em><strong>Giscus</strong></em><br>
+A great commenting system but GitHub accounts only. It uses GitHub discussions
+to store the comments, which is neat and better than alternatives that use
+GitHub issues.</p>
+<p><em><strong>Isso</strong></em><br>
+Another great commenting system but you need to self host it.</p>
+<p><em><strong>Cactus Comments: My pick</strong></em>
+Allows anonymous comment, uses the matrix chat protocol in the backend. So
+people can login to matrix and keep track of their comments if they want. Can
+be self hosted but not required.</p>
+<h3 id="make-posting-easy-on-any-device">Make posting easy on any device</h3>
+<p>Creating posts with Hugo requires a terminal, and sitting down in front of a
+computer in the usual programming environment to just put something on the blog
+feels like work.</p>
+<p>Blogging should be fun and easy so that I can post regularly.
+So being able to do it from my phone was a must. With this in mind I was
+thinking about implementing a simple solution to this problem.</p>
+<p><em><strong>Termux</strong></em><br>
+I really like the Termux terminal App on Android. But coding or even just
+writing in it feels cumbersome to me. Also, if you have a few Hugo shortcodes
+to embed videos, images or something a bit more complex you have to memorize
+them and write them in your Markdown, all kinds of no fun.</p>
+<p><em><strong>DecapCMS</strong></em></p>
+<ul>
+<li>If you don&rsquo;t want to use Netlify it&rsquo;s a bit of a hassle to self host the
+backend and maintain it.</li>
+<li>If you want to log in with other providers, setting up OAuth is not so easy
+and requires your own hosting too.</li>
+<li>The biggest factor for me personally is scalability. Due to its design,
+GitHub API requests are required, and these are limited to 5000 for free
+accounts.   In practice, that means you can have about 10k posts on your
+blog. That&rsquo;s probably enough for me (if I were to create a new GitHub account
+just for the blog). But I don&rsquo;t want to create a new GitHub account and need
+those free API requests for other projects as well. TinaCMS&rsquo;s cloud proxy
+approach makes things more complicated, but it&rsquo;s also kind of necessary. I&rsquo;m
+excited to see how the project develops with the new maintainer and will
+definitely keep an eye on it.</li>
+<li><a href="https://github.com/decaporg/decap-cms/issues/663">https://github.com/decaporg/decap-cms/issues/663</a></li>
+<li><a href="https://decapcms.org/blog/2023/11/git-based-cms-definition-features-best-practices/">https://decapcms.org/blog/2023/11/git-based-cms-definition-features-best-practices/</a></li>
+</ul>
+<p><em><strong>TinaCMS: My pick</strong></em><br>
+It&rsquo;s a great git based CMS. It offers visual editing, cloud database proxy and
+lots of customization. However visual editing only works with a JS framework.</p>
+<p>Choosing between DecapCMS and TinaCMS was a difficult decision. I really needed
+to get a good understanding of how they both work because they are very
+similar. DecapCMS is simpler and has fewer features and customizations, which
+is actually an advantage for me. But the GitHub API issue makes it a potential
+future problem that I don&rsquo;t want to deal with.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So far I like the minimalist approach for my blog. I hope it keeps me
+interested to keep blogging. I wish you all a great new year 2024 🎉</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="text">Do you need a simple commenting system for your blog?</title>
+    <author>
+      <name>Simon Woodtli</name>
+      <uri>https://www.simonwoodtli.com/</uri>
+    </author>
+    <id>https://simonwoodtli.com/links/do-you-need-a-simple-commenting-system-for-your-blog/</id>
+    <link rel="related" href="https://simonwoodtli.com/links/do-you-need-a-simple-commenting-system-for-your-blog/" hreflang="en-us" type="text/html" />
+    <link rel="alternate" href="https://cactus.chat/" type="text/html" />
+    <updated>2023-12-30T16:21:30Z</updated>
+    <published>2023-12-30T16:21:30Z</published>
+    <content type="html"><![CDATA[<p>Give Cactus Comments a try, it&rsquo;s great! It can be easily embedded into your
+personal blog and gives your readers the ability to comment on your posts. The
+best part is that you don&rsquo;t even have to sign up to post a comment if you don&rsquo;t
+want to. A simple, privacy-respecting commenting system, yay. And for further
+engaging you simply login to matrix and have a chat.</p>
+]]></content>
+  </entry>
+</feed>
