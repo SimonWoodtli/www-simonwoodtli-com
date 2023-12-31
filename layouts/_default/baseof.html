@@ -6,9 +6,12 @@
     <title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
     {{ $favicon := resources.Get "img/favicon.ico" }}
     <link rel="icon" href="{{ $favicon.RelPermalink }}" /><!-- favicon -->
+    {{ if .IsPage }}<!-- apply cactus style to single pages only -->
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+    {{ end }}
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet"><!-- pagefind -->
     {{ $style := resources.Get "css/style.css" }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" /><!-- tailwind -->
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet"><!-- pagefind -->
   </head>
   <body class="flex justify-content relative bg-primary text-regular">
     <!-- 'absolute inset-y-0 left-0' together with 'transform

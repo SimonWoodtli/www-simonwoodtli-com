@@ -1,0 +1,15 @@
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+
+<div id="comments" class="mb-12">
+  <div id="cactusComments"></div>
+</div>
+
+<script>
+initComments({
+    node: document.getElementById("cactusComments"),
+    defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+    serverName: "cactus.chat",
+    siteName: "simonwoodtli.com",
+    commentSectionId: "{{ .File.UniqueID }}"
+})
+</script>

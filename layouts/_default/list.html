@@ -25,7 +25,7 @@
 		<!-- loop pages start -->
 		{{ range $paginator.Pages }}
     <article class="mb-8">
-			<h2 class="inline-block 2xl:text-2xl text-xl decoration-1 hover:underline uppercase font-bold mb-8">
+			<h2 class="inline-block 2xl:text-3xl text-2xl decoration-1 hover:underline uppercase font-bold mb-4">
 				<a class="" href="{{ if eq .Section "links" }}{{ .Params.linkUrl }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .LinkTitle }}
 				{{ if eq .Section "links" }}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -63,12 +63,12 @@
 			{{ end }}
 
 			<!-- markdown content summary -->
-			<p class="leading-relaxed my-2">{{ .Summary }}</p>
+			<p class="sm:text-lg text-base leading-relaxed mt-6 mb-2">{{ .Summary }}</p>
 			<!-- TODO Read More link: make it more interesting by having
 		 multiple texts that can appear 'read more', 'Want to know more'
 		 etc. -->
 			<a href="{{ .RelPermalink }}" class="inline-block underline
-				hover:no-underline font-bold text-accent"><span>Read more</span></a>
+				hover:no-underline font-bold sm:text-lg text-base text-accent"><span>Read more</span></a>
 			<!-- If post contains cover img display it-->
 			{{ if .Params.cover }}
 		  {{ $title := replaceRE "[^a-zA-Z0-9]+" "-" .Title | lower }}

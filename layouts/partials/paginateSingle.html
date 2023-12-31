@@ -1,5 +1,5 @@
 {{ if or .Next .Prev -}}
-<footer class="flex justify-between border-t-[1px] pt-16 pb-8">
+<footer class="flex justify-between border-t-[1px] border-regular border-opacity-50 pt-16 pb-8">
 	<!-- FIX extra long titles should not go until middle but have fixed width -->
 	{{- with .Prev }}
 	<a class="flex flex-col max-w-[19rem] group text-muted" href="{{ .RelPermalink}}">

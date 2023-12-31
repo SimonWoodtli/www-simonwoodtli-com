@@ -442,6 +442,8 @@ video {
   /* colors mostly used with text/border */
   --color-text-regular: 61 68 73;
   /*mild black*/
+  --color-text-white: 255 255 255;
+  /*white*/
   --color-text-muted: 127 136 143;
   /*gray */
   /*--color-text-inverted: 245 106 106; /*light red*/
@@ -450,8 +452,6 @@ video {
   /*--color-text-inverted: 98 212 229; /*light blue*/
   /*--color-text-inverted: 50 205 50; /*light green*/
   --color-text-accent: var(--color-text-inverted);
-  --color-text-ringgray: 209 213 219;
-  /* gray-300 */
   /* colors mostly used with bg to fill */
   --color-bg-primary: 255 255 255;
   /* white */
@@ -459,7 +459,9 @@ video {
   /* light gray */
   --color-bg-tertiary: 226 232 240;
   /* darker gray  */
-  --color-img-outline: var(--color-text-ringgray);
+  --color-bg-quaternary: 209 213 219;
+  /* gray-300 */
+  --color-img-outline: var(--color-bg-quaternary);
 }
 
 /* default dark theme: */
@@ -468,6 +470,8 @@ video {
   /* colors mostly used with text/border */
   --color-text-regular: 200 200 200;
   /*grayish white*/
+  --color-text-white: 226 232 240;
+  /*grayish white*/
   --color-text-muted: 127 136 143;
   /*gray (seems fine same as light)*/
   --color-text-inverted: 251 73 52;
@@ -475,8 +479,6 @@ video {
   /*--color-text-inverted: 98 212 229; /*light blue*/
   /*--color-text-inverted: 50 205 50; /*light green*/
   --color-text-accent: var(--color-text-inverted);
-  --color-text-ringgray: 40 40 40;
-  /* gray-800 */
   /* colors mostly used with bg to fill */
   --color-bg-primary: 40 40 40;
   /*gruvbox black*/
@@ -484,6 +486,8 @@ video {
   /*darker gruvbox black*/
   --color-bg-tertiary: 24 24 24;
   /* even darker black  */
+  --color-bg-quaternary: 50 50 50;
+  /* lighter gruvbox black */
   --color-img-outline: var(--color-bg-tertiary);
 }
 
@@ -1147,6 +1151,10 @@ video {
   border-width: 0;
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1224,11 +1232,6 @@ video {
   margin-right: auto;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -1240,6 +1243,10 @@ video {
 
 .mb-16 {
   margin-bottom: 4rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-24 {
@@ -1609,14 +1616,14 @@ video {
   border-color: rgb(var(--color-text-accent) / var(--tw-border-opacity));
 }
 
+.border-quaternary {
+  --tw-border-opacity: 1;
+  border-color: rgb(var(--color-bg-quaternary) / var(--tw-border-opacity));
+}
+
 .border-regular {
   --tw-border-opacity: 1;
   border-color: rgb(var(--color-text-regular) / var(--tw-border-opacity));
-}
-
-.border-ringgray {
-  --tw-border-opacity: 1;
-  border-color: rgb(var(--color-text-ringgray) / var(--tw-border-opacity));
 }
 
 .border-tertiary {
@@ -1791,6 +1798,11 @@ video {
   vertical-align: text-bottom;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -1926,6 +1938,48 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/*########################## cactus comments #########################*/
+
+#comments {
+  --cactus-button-color: rgb(var(--color-text-accent));
+  --cactus-button-text-color: rgb(var(--color-text-white));
+  --cactus-button-color--strong: rgb(var(--color-text-muted));
+  --cactus-background-color--strong: rgb(var(--color-bg-tertiary));
+  /*--cactus-button-color--stronger: the color when you hover and click on login button or close button (short animation) */
+  --cactus-box-shadow-color: none;
+  --cactus-text-color--soft: rgb(var(--color-text-muted));
+  --cactus-login-form-text-color: rgb(var(--color-text-regular));
+  --cactus-border-color: rgb(var(--color-bg-secondary));
+  /* also the color of the background from avatars */
+}
+
+#comments input, #comments textarea {
+  /*--cactus-background-color: rgb(var(--color-bg-tertiary)) !important;*/
+  background-color: rgb(var(--color-bg-tertiary));
+  opacity: 0.85;
+  /*--tw-bg-opacity: 0.5 !important;*/
+  --tw-ring-color: rgb(var(--color-bg-quaternary));
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  outline: none;
+  border: none;
+}
+
+#comments input:focus, #comments textarea:focus {
+  --tw-ring-color: rgb(var(--color-text-inverted));
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+}
+
+/* TODO: code blocks already create a code element but there is currently no
+ * default styling applied to it. And also no syntax highlighting. Look
+ * into this at a later stage or implement it myself. */
+
+/*
+#comments code {
+  background-color: black;
+}
+*/
+
 /*######################## pagefind searchbar ########################*/
 
 #search .pagefind-ui {
@@ -1933,7 +1987,7 @@ video {
   --pagefind-ui-primary: rgb(var(--color-text-inverted));
   --pagefind-ui-text: rgb(var(--color-text-regular));
   --pagefind-ui-background: rgb(var(--color-bg-tertiary));
-  --pagefind-ui-border: rgb(var(--color-text-ringgray));
+  --pagefind-ui-border: rgb(var(--color-bg-quaternary));
   --pagefind-ui-tag: rgb(var(--color-bg-tertiary));
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: 4px;
@@ -1954,19 +2008,26 @@ video {
 }
 
 #search .pagefind-ui__search-input {
-  --tw-ring-color: rgb(var(--color-text-ringgray));
+  --tw-ring-color: rgb(var(--color-bg-quaternary));
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   outline: none;
   border: none;
+  opacity: 0.85;
 }
 
-#search .pagefind-ui__search-input:-moz-placeholder-shown {
-  font-style: italic;
+#search .pagefind-ui__search-input::-moz-placeholder {
+  /*FIXME I'd like to change the placeholder font color, but it only
+   * accepts color keywords like red, green etc. No rgb(), no hex ... */
+  /*color: rgb(var(--color-text-muted)) !important;*/
+  /*color: #7F888F !important;*/
 }
 
-#search .pagefind-ui__search-input:placeholder-shown {
-  font-style: italic;
+#search .pagefind-ui__search-input::placeholder {
+  /*FIXME I'd like to change the placeholder font color, but it only
+   * accepts color keywords like red, green etc. No rgb(), no hex ... */
+  /*color: rgb(var(--color-text-muted)) !important;*/
+  /*color: #7F888F !important;*/
 }
 
 #search mark {
@@ -2653,6 +2714,16 @@ video {
   line-height: 1.5rem;
 }
 
+.prose-p\:my-2 :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-p\:text-base :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .prose-p\:text-regular :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-text-opacity: 1;
   color: rgb(var(--color-text-regular) / var(--tw-text-opacity));
@@ -2670,6 +2741,11 @@ video {
 .prose-pre\:bg-tertiary :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-bg-opacity: 1;
   background-color: rgb(var(--color-bg-tertiary) / var(--tw-bg-opacity));
+}
+
+.prose-li\:text-base :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .prose-li\:text-regular :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
@@ -2708,6 +2784,21 @@ video {
 @media (min-width: 640px) {
   .sm\:h-\[30vh\] {
     height: 30vh;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .prose-p\:sm\:text-lg :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .prose-li\:sm\:text-lg :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
