@@ -21,7 +21,7 @@ Only add more technologies if you need more features that cannot be achieved
 with the current stack. So start with the simplest technology that is
 sufficient for your goal.
 
-### Blog Architecture
+## Blog Architecture
 
 * My blog should have a main feed where link posts and article posts should be aggregated on the homepage.
 * Link posts are reaction posts to a quoted information on the web. They offer the bloggers take on it.
@@ -30,13 +30,13 @@ sufficient for your goal.
 * Tags to categorize the posts.
 * Comments to interact with the content.
 
-Thanks John for inventing Blogs with link and blog posts: https://daringfireball.net/
+Thanks John 🙏 for inventing Blogs with link and blog posts: https://daringfireball.net/
 
-### Static Site Generators
+## Static Site Generators
 
-Every modern blog that is created from scratch should nowadays use a static
-website generator. A static website is easier to deploy, easier to maintain
-and easier to create.
+I believe that developing a modern blog from scratch should nowadays be done
+using a static site generator. Because a static website is easier to deploy, easier to
+maintain and easier to create.
 
 In my [research] I narrowed the selection down to these three SSGs:
 
@@ -52,7 +52,7 @@ However I am learning Go and Zola is written in Rust.
 It's more widely adapted in the industry than Zola and because I can practice
 the arcane go template lang :)
 
-### CSS
+## CSS
 
 After some research, I decided to have a closer look on these three candidates:
 
@@ -69,7 +69,7 @@ Because it makes styling a project so much faster and allows for complete
 custom designs. It's a simple utility first framework that increases your
 productivity.
 
-### Javascript
+## Javascript
 
 These are some frontend frameworks that come to mind when choosing a stack:
 
@@ -89,7 +89,7 @@ product.
 It is the simplest technology available for Webdev, and I had very few features
 in mind for this project.
 
-### Comments
+## Comments
 
 I was looking for an open source commenting system that was easy to maintain
 and simple to set up. These three were worthy contenders that I wanted to take
@@ -103,12 +103,12 @@ GitHub issues.
 ***Isso***  
 Another great commenting system but you need to self host it.
 
-***Cactus Comments: My pick***
+***Cactus Comments: My pick***  
 Allows anonymous comment, uses the matrix chat protocol in the backend. So
 people can login to matrix and keep track of their comments if they want. Can
 be self hosted but not required.
 
-### Make posting easy on any device
+## Make posting easy on any device
 
 Creating posts with Hugo requires a terminal, and sitting down in front of a
 computer in the usual programming environment to just put something on the blog

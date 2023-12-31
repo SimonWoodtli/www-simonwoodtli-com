@@ -13,7 +13,7 @@
   <rights>Simon Woodtli - [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)</rights>
   <icon>https://simonwoodtli.com/img/favicon.ico</icon>
   <logo>https://simonwoodtli.com/img/logo.png</logo>
-  <updated>2023-12-31T19:09:34Z</updated>
+  <updated>2023-12-31T20:11:39Z</updated>
   <link rel="self" type="application/atom+xml" href="https://simonwoodtli.com/atom.xml" hreflang="en-us" title="Atom Feed" />
   <link rel="alternate" type="text/html" href="https://simonwoodtli.com/" hreflang="en-us" title="HTML" />
   <entry>
@@ -37,7 +37,7 @@ Use the minimum required technology that is available and gets the job done.
 Only add more technologies if you need more features that cannot be achieved
 with the current stack. So start with the simplest technology that is
 sufficient for your goal.</p>
-<h3 id="blog-architecture">Blog Architecture</h3>
+<h2 id="blog-architecture">Blog Architecture</h2>
 <ul>
 <li>My blog should have a main feed where link posts and article posts should be aggregated on the homepage.</li>
 <li>Link posts are reaction posts to a quoted information on the web. They offer the bloggers take on it.</li>
@@ -46,11 +46,11 @@ sufficient for your goal.</p>
 <li>Tags to categorize the posts.</li>
 <li>Comments to interact with the content.</li>
 </ul>
-<p>Thanks John for inventing Blogs with link and blog posts: <a href="https://daringfireball.net/">https://daringfireball.net/</a></p>
-<h3 id="static-site-generators">Static Site Generators</h3>
-<p>Every modern blog that is created from scratch should nowadays use a static
-website generator. A static website is easier to deploy, easier to maintain
-and easier to create.</p>
+<p>Thanks John 🙏 for inventing Blogs with link and blog posts: <a href="https://daringfireball.net/">https://daringfireball.net/</a></p>
+<h2 id="static-site-generators">Static Site Generators</h2>
+<p>I believe that developing a modern blog from scratch should nowadays be done
+using a static site generator. Because a static website is easier to deploy, easier to
+maintain and easier to create.</p>
 <p>In my <a href="https://jamstack.org/generators/">research</a> I narrowed the selection down to these three SSGs:</p>
 <p><em><strong>Astro</strong></em><br>
 I think with a more complex tech stack Astro would have been the better choice.
@@ -61,7 +61,7 @@ However I am learning Go and Zola is written in Rust.</p>
 <p><em><strong>Hugo: My pick</strong></em><br>
 It&rsquo;s more widely adapted in the industry than Zola and because I can practice
 the arcane go template lang :)</p>
-<h3 id="css">CSS</h3>
+<h2 id="css">CSS</h2>
 <p>After some research, I decided to have a closer look on these three candidates:</p>
 <p><em><strong>Vanilla CSS</strong></em><br>
 I&rsquo;ve played around with vanilla CSS enough to know that it&rsquo;s very time
@@ -73,7 +73,7 @@ pre-built components.</p>
 Because it makes styling a project so much faster and allows for complete
 custom designs. It&rsquo;s a simple utility first framework that increases your
 productivity.</p>
-<h3 id="javascript">Javascript</h3>
+<h2 id="javascript">Javascript</h2>
 <p>These are some frontend frameworks that come to mind when choosing a stack:</p>
 <p><em><strong>Alpinejs</strong></em><br>
 Alpine is great it works really well with htmx. But my blog has no dynamic
@@ -88,7 +88,7 @@ product.</p>
 <p><em><strong>Vanilla JS: My pick</strong></em><br>
 It is the simplest technology available for Webdev, and I had very few features
 in mind for this project.</p>
-<h3 id="comments">Comments</h3>
+<h2 id="comments">Comments</h2>
 <p>I was looking for an open source commenting system that was easy to maintain
 and simple to set up. These three were worthy contenders that I wanted to take
 a closer look at:</p>
@@ -98,11 +98,11 @@ to store the comments, which is neat and better than alternatives that use
 GitHub issues.</p>
 <p><em><strong>Isso</strong></em><br>
 Another great commenting system but you need to self host it.</p>
-<p><em><strong>Cactus Comments: My pick</strong></em>
+<p><em><strong>Cactus Comments: My pick</strong></em><br>
 Allows anonymous comment, uses the matrix chat protocol in the backend. So
 people can login to matrix and keep track of their comments if they want. Can
 be self hosted but not required.</p>
-<h3 id="make-posting-easy-on-any-device">Make posting easy on any device</h3>
+<h2 id="make-posting-easy-on-any-device">Make posting easy on any device</h2>
 <p>Creating posts with Hugo requires a terminal, and sitting down in front of a
 computer in the usual programming environment to just put something on the blog
 feels like work.</p>

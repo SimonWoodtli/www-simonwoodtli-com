@@ -1232,11 +1232,6 @@ video {
   margin-right: auto;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -1248,6 +1243,10 @@ video {
 
 .mb-16 {
   margin-bottom: 4rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-24 {
@@ -1797,6 +1796,11 @@ video {
 
 .align-text-bottom {
   vertical-align: text-bottom;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -2710,6 +2714,16 @@ video {
   line-height: 1.5rem;
 }
 
+.prose-p\:my-2 :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-p\:text-base :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .prose-p\:text-regular :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-text-opacity: 1;
   color: rgb(var(--color-text-regular) / var(--tw-text-opacity));
@@ -2727,6 +2741,11 @@ video {
 .prose-pre\:bg-tertiary :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-bg-opacity: 1;
   background-color: rgb(var(--color-bg-tertiary) / var(--tw-bg-opacity));
+}
+
+.prose-li\:text-base :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .prose-li\:text-regular :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
@@ -2765,6 +2784,21 @@ video {
 @media (min-width: 640px) {
   .sm\:h-\[30vh\] {
     height: 30vh;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .prose-p\:sm\:text-lg :is(:where(p):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .prose-li\:sm\:text-lg :is(:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 

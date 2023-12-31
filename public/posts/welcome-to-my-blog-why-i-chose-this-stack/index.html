@@ -137,11 +137,11 @@
 		<article data-pagefind-body class="mb-8">
 			
 			
-			<h1 data-pagefind-meta="title" class="uppercase font-bold 2xl:text-2xl text-xl mb-4">Welcome to my blog - Why I chose this stack<h1>
+			<h1 data-pagefind-meta="title" class="uppercase font-bold 2xl:text-3xl text-2xl mb-4">Welcome to my blog - Why I chose this stack<h1>
 			
 			
 			
-			<div class="grid md:grid-cols-[auto_1fr] grid-cols-1">
+			<div class="grid md:grid-cols-[auto_1fr] grid-cols-1 mb-4">
 				<div class="flex gap-2">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="md:w-5 md:h-5 w-4 h-4 fill-muted">
 					 <path d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12z" />
@@ -177,14 +177,7 @@
 				</nav>
 			</div>
 			
-			<main class="max-w-none grid grid-cols-1 prose
-			prose-img:text-regular prose-p:text-regular
-				prose-li:text-regular prose-li:marker:text-muted
-				prose-headings:text-regular prose-headings:font-bold
-				prose-headings:uppercase prose-h2:2xl:text-2xl
-				prose-h2:text-xl prose-h3:2xl:text-xl prose-h3:text-lg
-				prose-h4:2xl:text-lg prose-h4:text-base prose-a:text-muted
-				hover:prose-a:no-underline prose-pre:bg-tertiary">
+			<main class="max-w-none grid grid-cols-1 prose prose-img:text-regular prose-p:text-regular prose-p:sm:text-lg prose-p:text-base prose-p:my-2 prose-li:text-regular prose-li:sm:text-lg prose-li:text-base prose-li:marker:text-muted prose-headings:text-regular prose-headings:font-bold prose-headings:uppercase prose-h2:2xl:text-2xl prose-h2:text-xl prose-h3:2xl:text-xl prose-h3:text-lg prose-h4:2xl:text-lg prose-h4:text-base prose-a:text-muted hover:prose-a:no-underline prose-pre:bg-tertiary">
 				<p>A few weeks ago, I decided to create my own blog. I also desperately needed a
 portfolio site to show my work and apply for a job. And I was reluctant to use
 a theme.</p>
@@ -196,7 +189,7 @@ Use the minimum required technology that is available and gets the job done.
 Only add more technologies if you need more features that cannot be achieved
 with the current stack. So start with the simplest technology that is
 sufficient for your goal.</p>
-<h3 id="blog-architecture">Blog Architecture</h3>
+<h2 id="blog-architecture">Blog Architecture</h2>
 <ul>
 <li>My blog should have a main feed where link posts and article posts should be aggregated on the homepage.</li>
 <li>Link posts are reaction posts to a quoted information on the web. They offer the bloggers take on it.</li>
@@ -205,11 +198,11 @@ sufficient for your goal.</p>
 <li>Tags to categorize the posts.</li>
 <li>Comments to interact with the content.</li>
 </ul>
-<p>Thanks John for inventing Blogs with link and blog posts: <a href="https://daringfireball.net/">https://daringfireball.net/</a></p>
-<h3 id="static-site-generators">Static Site Generators</h3>
-<p>Every modern blog that is created from scratch should nowadays use a static
-website generator. A static website is easier to deploy, easier to maintain
-and easier to create.</p>
+<p>Thanks John 🙏 for inventing Blogs with link and blog posts: <a href="https://daringfireball.net/">https://daringfireball.net/</a></p>
+<h2 id="static-site-generators">Static Site Generators</h2>
+<p>I believe that developing a modern blog from scratch should nowadays be done
+using a static site generator. Because a static website is easier to deploy, easier to
+maintain and easier to create.</p>
 <p>In my <a href="https://jamstack.org/generators/">research</a> I narrowed the selection down to these three SSGs:</p>
 <p><em><strong>Astro</strong></em><br>
 I think with a more complex tech stack Astro would have been the better choice.
@@ -220,7 +213,7 @@ However I am learning Go and Zola is written in Rust.</p>
 <p><em><strong>Hugo: My pick</strong></em><br>
 It&rsquo;s more widely adapted in the industry than Zola and because I can practice
 the arcane go template lang :)</p>
-<h3 id="css">CSS</h3>
+<h2 id="css">CSS</h2>
 <p>After some research, I decided to have a closer look on these three candidates:</p>
 <p><em><strong>Vanilla CSS</strong></em><br>
 I&rsquo;ve played around with vanilla CSS enough to know that it&rsquo;s very time
@@ -232,7 +225,7 @@ pre-built components.</p>
 Because it makes styling a project so much faster and allows for complete
 custom designs. It&rsquo;s a simple utility first framework that increases your
 productivity.</p>
-<h3 id="javascript">Javascript</h3>
+<h2 id="javascript">Javascript</h2>
 <p>These are some frontend frameworks that come to mind when choosing a stack:</p>
 <p><em><strong>Alpinejs</strong></em><br>
 Alpine is great it works really well with htmx. But my blog has no dynamic
@@ -247,7 +240,7 @@ product.</p>
 <p><em><strong>Vanilla JS: My pick</strong></em><br>
 It is the simplest technology available for Webdev, and I had very few features
 in mind for this project.</p>
-<h3 id="comments">Comments</h3>
+<h2 id="comments">Comments</h2>
 <p>I was looking for an open source commenting system that was easy to maintain
 and simple to set up. These three were worthy contenders that I wanted to take
 a closer look at:</p>
@@ -257,11 +250,11 @@ to store the comments, which is neat and better than alternatives that use
 GitHub issues.</p>
 <p><em><strong>Isso</strong></em><br>
 Another great commenting system but you need to self host it.</p>
-<p><em><strong>Cactus Comments: My pick</strong></em>
+<p><em><strong>Cactus Comments: My pick</strong></em><br>
 Allows anonymous comment, uses the matrix chat protocol in the backend. So
 people can login to matrix and keep track of their comments if they want. Can
 be self hosted but not required.</p>
-<h3 id="make-posting-easy-on-any-device">Make posting easy on any device</h3>
+<h2 id="make-posting-easy-on-any-device">Make posting easy on any device</h2>
 <p>Creating posts with Hugo requires a terminal, and sitting down in front of a
 computer in the usual programming environment to just put something on the blog
 feels like work.</p>
