@@ -12,7 +12,7 @@ portfolio site to show my work and apply for a job. And I was reluctant to use
 a theme.
 
 So I researched what technologies would make the most sense to accomplish what
-what I wanted. I wanted to keep it simple and follow the Progressive
+I wanted. I wanted to keep it simple and follow the Progressive
 Enhancement approach to achieve my goal.
 
 ***What is Progressive Enhancement?***  

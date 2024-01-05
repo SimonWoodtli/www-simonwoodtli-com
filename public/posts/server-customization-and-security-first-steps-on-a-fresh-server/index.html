@@ -3,9 +3,11 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
-    <title>Archive | Simon&#39;s Website</title>
+    <title>Server Customization and Security - First Steps on a Fresh Server | Simon&#39;s Website</title>
     
     <link rel="icon" href="/img/favicon.ico" />
+    
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
     
     <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
     
@@ -127,66 +129,130 @@
 </header>
 
       
-
-
-
 <div class="relative mx-auto max-w-[48rem] md:mt-24 mt-16 md:bg-secondary md:bg-opacity-50 bg-primary md:border-l-[0.2rem] md:border-solid border-hidden border-tertiary border-opacity-50 py-8 after:bg-primary">
-  
-  <div class="after:absolute after:hidden after:md:block after:top-0 after:right-0 after:bg-primary after:border-t-[1.5rem] after:border-l-[1.5rem] after:border-l-accent after:border-t-transparent"></div>
+	
+	<div class="after:absolute after:hidden after:md:block after:top-0 after:right-0 after:bg-primary after:border-t-[1.5rem] after:border-l-[1.5rem] after:border-l-accent after:border-t-transparent"></div>
 
-  <main class="2xl:mx-[2.375rem] md:mx-[1.5rem] mx-0 mb-16">
+	<div class="2xl:mx-[2.375rem] md:mx-[1.5rem] mx-0">
+		<article data-pagefind-body class="mb-8">
+			
+			
+			<h1 data-pagefind-meta="title" class="uppercase font-bold 2xl:text-3xl text-2xl mb-4">Server Customization and Security - First Steps on a fresh Server<h1>
+			
+			
+			
+			<div class="grid md:grid-cols-[auto_1fr] grid-cols-1 mb-4">
+				<div class="flex gap-2">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="md:w-5 md:h-5 w-4 h-4 fill-muted">
+					 <path d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12z" />
+					 <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
+					</svg>
+					<time class="md:text-sm text-xs text-muted md:after:content-['|'] md:after:pl-3" pubdate="2024-01-05" datetime="2024-01-05T14:52:07Z" data-pagefind-meta="date:2024-01-05" data-pagefind-sort="date:2024-01-05">Friday, Jan 5, 2024</time>
+				</div>
+				
+				<nav class="md:ml-2">
+					
+				</nav>
+			</div>
+			
+			<main class="max-w-none grid grid-cols-1 prose prose-img:text-regular prose-p:text-regular prose-p:sm:text-lg prose-p:text-base prose-p:my-2 prose-li:text-regular prose-li:sm:text-lg prose-li:text-base prose-li:marker:text-muted prose-headings:text-regular prose-headings:font-bold prose-headings:uppercase prose-h2:2xl:text-2xl prose-h2:text-xl prose-h3:2xl:text-xl prose-h3:text-lg prose-h4:2xl:text-lg prose-h4:text-base prose-a:text-muted hover:prose-a:no-underline prose-pre:bg-tertiary">
+				<p>Today we&rsquo;re going to take a look at how to configure and setup a
+Linux server so that it is secure. If you really dig it I created a couple of
+notes that you can use to further harden your server and customize it. If you
+are lazy wait a bit I will be creating an ansible playbook to automate everything.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You already created an account at your favourite VPS server provider (Digital
+Ocean, Vultr etc.)</li>
+<li>You already put some money on your VPS account and deployed a VPS (go with
+the cheapest 5$/month, is plenty to start out)</li>
+<li>Optional you bought a domain name (namecheap.com etc.) and pointed the A
+record to your VPS servers IPV4 address. A free version I like to use:
+<a href="https://duckdns.org/">https://duckdns.org/</a></li>
+<li>If you are on Windows you have WSL setup or use a Linux VM. Optionally install tmux.</li>
+<li>If you are on Mac you are good to go. Optionally install homebrew and install tmux with it.</li>
+</ul>
+<blockquote>
+<p>🧐 If you don&rsquo;t like tmux or don&rsquo;t wanna learn or use that. Just open up two
+terminal windows instead :)</p>
+</blockquote>
+<h2 id="first-steps">First Steps</h2>
+<blockquote>
+<p>🧐 Don&rsquo;t add the SSH public key via your VPSs website. This would add the key
+for the root users home, which we&rsquo;ll disable anyways.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ As always with daemons remember to restart the systemd service to apply
+changes in the config files. <code>systemctl restart sshd</code></p>
+</blockquote>
+<blockquote>
+<p>📝 Replace &lsquo;xnasero&rsquo; with whatever username you want to use.</p>
+</blockquote>
+<ol>
+<li>Start a terminal and run <code>tmux</code></li>
+<li>1st tmux window - login: Update system (keep that connection going, in case something goes wrong)</li>
+<li>2nd tmux window - login: Configure stuff</li>
+<li>Add new user group: <code>sudo groupadd xnasero</code> (non existent groups can&rsquo;t be added with <code>useradd</code> directly)</li>
+<li>Create regular user with sudo access (Fedora uses wheel, Debian uses sudo):
+<code>useradd -m -g xnasero -G users,sudo,adm -s /bin/bash -c admin-account xnasero &amp;&amp; passwd xnasero</code></li>
+<li>Check if wheel|sudo group is activated/exists on your OS or add it manually:
+<code>vsudo</code> look for <code>%wheel  ALL=(ALL)       ALL</code> to double check: <code>sudo -l -U xnasero</code></li>
+<li>Disable ssh root login: <code>vi /etc/ssh/sshd_config</code> look for <code>PermitRootLogin yes</code> change to <code>no</code></li>
+<li>If you don&rsquo;t have an ssh key pair generate one on your local machine. Then
+we copy the public key to the server: <code>ssh-copy-id -i ~/.ssh/yourkey.pub xnasero@remote_server_IP</code>
+<ol>
+<li>Open new tmux window and try to connect with username and see if it works (no pw prompt and logged in as xnasero)</li>
+</ol>
+</li>
+<li>Disable ssh password login: <code>vi /etc/ssh/sshd_config</code> add <code>AuthenticationMethods publickey</code></li>
+<li>Disable root login altogether: <code>sudo passwd -l root</code></li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>Checkout my notes to further customize and secure your beloved server.</p>
+<ol>
+<li><a href="https://github.com/SimonWoodtli/zet/tree/main/20240104134254">Server Security and Setup: Make it cosy</a>
+<ol>
+<li><a href="https://github.com/SimonWoodtli/zet/tree/main/20240104130222">Server Security: Config ufw Firewall</a></li>
+<li><a href="https://github.com/SimonWoodtli/zet/tree/main/20240104124550">Server Security: Additional SSH Hardening</a></li>
+<li><a href="https://github.com/SimonWoodtli/zet/tree/main/20240104010508">Server Security: Add fail2ban</a></li>
+</ol>
+</li>
+<li>Add data backup system: This is different on each server and depends on the services and the data that you want to backup.</li>
+<li>Add update system: Use LVMs to create snapshots of your system before you update any packages</li>
+<li>Add services and apps you want to host, configure them and grok how to host them in a secure way.</li>
+</ol>
 
-    
-    <div class="inline-block border-accent border-b-[3px] pr-4 pb-3 mb-8">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-block 2xl:w-8 2xl:h-8 md:w-7 md:h-7 w-6 h-6 mr-4 fill-secondary lg:align-bottom align-text-bottom">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-      </svg>
-      <h1 class="inline-block font-bold 2xl:text-3xl md:text-2xl text-xl">Archive</h1>
-    </div>
+			</main>
+		</article>
+		
+		<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
 
-
-    
-    
-    <h2 class="font-bold md:text-xl text-lg my-8">2024</h1>
-
-    
-    <ul class="text-md list-disc marker:text-muted md:ml-8 ml-3">
-      <li>
-        <div class="grid grid-cols-[auto_1fr] md:gap-6 gap-4">
-          <time pubdate="2024-01-05" datetime="2024-01-05T14:52:07Z" class="text-muted">2024-01-05</time>
-          <h3 class="inline-block"><a class="underline hover:decoration-accent" href="/posts/server-customization-and-security-first-steps-on-a-fresh-server/">Server Customization and Security - First Steps on a fresh Server</a></h3>
-        </div>
-      </li>
-    </ul>
-    
-    
-    <h2 class="font-bold md:text-xl text-lg my-8">2023</h1>
-
-    
-    <ul class="text-md list-disc marker:text-muted md:ml-8 ml-3">
-      <li>
-        <div class="grid grid-cols-[auto_1fr] md:gap-6 gap-4">
-          <time pubdate="2023-12-31" datetime="2023-12-31T14:43:55Z" class="text-muted">2023-12-31</time>
-          <h3 class="inline-block"><a class="underline hover:decoration-accent" href="/posts/welcome-to-my-blog-why-i-chose-this-stack/">Welcome to my blog - Why I chose this stack</a></h3>
-        </div>
-      </li>
-    </ul>
-    
-    <ul class="text-md list-disc marker:text-muted md:ml-8 ml-3">
-      <li>
-        <div class="grid grid-cols-[auto_1fr] md:gap-6 gap-4">
-          <time pubdate="2023-12-30" datetime="2023-12-30T16:21:30Z" class="text-muted">2023-12-30</time>
-          <h3 class="inline-block"><a class="underline hover:decoration-accent" href="/links/do-you-need-a-simple-commenting-system-for-your-blog/">Do you need a simple commenting system for your blog?</a></h3>
-        </div>
-      </li>
-    </ul>
-    
-    
-
-
-  </main>
+<div id="comments" class="mb-12">
+  <div id="cactusComments"></div>
 </div>
- 
+
+<script>
+initComments({
+    node: document.getElementById("cactusComments"),
+    defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+    serverName: "cactus.chat",
+    siteName: "simonwoodtli.com",
+    commentSectionId: "6f5e4cf62e49aea1f3dec8c2073c0a47"
+})
+</script>
+
+		
+		<footer class="flex justify-between border-t-[1px] border-regular border-opacity-50 pt-16 pb-8">
+	
+	<a class="flex flex-col max-w-[19rem] group text-muted" href="/posts/welcome-to-my-blog-why-i-chose-this-stack/">
+		<span class="md:hover:text-current hover:decoration-accent md:no-underline underline">Previous Post:</span>
+		<h4 class="md:block hidden group-hover:decoration-accent underline">Welcome to my blog - Why I chose this stack</h4>
+	</a>
+	</footer>
+
+	</div>
+</div>
+
     </div>
     
     <script type="text/javascript" src="/js/main.js"></script>
