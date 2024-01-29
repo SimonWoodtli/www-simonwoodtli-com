@@ -30,7 +30,6 @@ darkModeToggle.addEventListener('click', () => {
     localStorage.setItem(darkModeStateKey, true)
   }
 })
-
 // ------------------------------ Sidebar -----------------------------
 //const isRetina = () => window.devicePixelRatio > 1;
 //TODO make an animation for closing/opening svg, right now just simple
@@ -59,7 +58,6 @@ btnSidebar.addEventListener('click', (e) => {
     svgSidebarMobile.setAttribute('d', svgSidebarMobile.getAttribute('d') === 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' ? 'M6 18L18 6M6 6l12 12' : 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5');
   }
 })
-
 // -------------------------- portfolio-page --------------------------
 const userAgent = navigator.userAgent;
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
@@ -80,27 +78,9 @@ if(document.querySelector('#portfolio')) {
 // ----------------------------- projects -----------------------------
   const projects = document.querySelector("#projects")
 
-  /*//FIXME also trying to use the parent did not improve sluggish behavior.
-  projects.addEventListener('click', (e) => {
-    const targetElement = event.target
-    if ( targetElement.classList.contains("divInfo") ) {
-      const svgInfoPath = targetElement.querySelector('.svgInfoPath');
-      svgInfoPath.setAttribute('d', svgInfoPath.getAttribute('d') === 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z' ? 'M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 37.690466 12.309534 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 13.390466 46 4 36.609534 4 25 C 4 13.390466 13.390466 4 25 4 z M 32.990234 15.986328 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.990234 15.986328 z' : 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z');
-
-      const projectImg = targetElement.parentNode.querySelector(".projectImg");
-      projectImg.classList.toggle("blur")
-
-      const projectCard = targetElement.parentNode.querySelector(".projectCard");
-      projectCard.classList.toggle("bottom-0")
-    }
-  })
-  */
   // Event Delegation: toggle classes when mobile info icon clicked
   projects.addEventListener('click', (e) => {
-    //FIXME reaction is sluggish, does not always register touching icon.
-    //On Destkop I changed user agent to mobile and it works fine, just on
-    //phone where I actually need this feature it's slow.
-    //FIXME I think it's literally my fat fingers lol, try to increase trigger area
+    //FIXME I think it's literally my fat fingers lol, try to increase trigger area of buttons
     const targetElement = event.target
     if ( targetElement.classList.contains("svgInfo") ) {
       // target path ele/ child of svg
@@ -121,24 +101,9 @@ if(document.querySelector('#portfolio')) {
     }
   })
 
-  /*
-  const svgInfoMobile = document.querySelector("#svgInfoMobile")
-  const btnInfo = document.querySelector("#btnInfo")
-  const projectCard0 = document.querySelector('#projectCard0')
-  const projectImg0 = document.querySelector("#projectImg0")
-  //FIXME the reaction using this was much better, but too many event listeners...
-  btnInfo.addEventListener('click', (e) => {
-    svgInfoMobile.setAttribute('d', svgInfoMobile.getAttribute('d') === 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z' ? 'M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 37.690466 12.309534 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 13.390466 46 4 36.609534 4 25 C 4 13.390466 13.390466 4 25 4 z M 32.990234 15.986328 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.990234 15.986328 z' : 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z');
-    projectCard0.classList.toggle("bottom-0")
-    projectImg0.classList.toggle("blur")
-  })
-  */
-
 } else {
    console.log("You are not on the portfolio page.")
 }
-
-
 
 // ------------------------------ meetme ------------------------------
 // FIXME rly small smartphones still have landscape mode img/text wrong layout
@@ -162,9 +127,6 @@ if (document.querySelector('#portfolio') && isMobile) {
 
 // adjusting projects gallery on mobile screens
 // ----------------------------- projects -----------------------------
-  /*btnInfo.classList.remove("hidden")
-  projectCard0.classList.remove("group-hover:bottom-0")
-  projectImg0.classList.remove("group-hover:blur")*/
   const projectInfos = document.querySelectorAll(".projectInfo")
   const projectImgs = document.querySelectorAll(".projectImg")
   const projectTags = document.querySelectorAll('.projectTag')
@@ -188,9 +150,4 @@ if (document.querySelector('#portfolio') && isMobile) {
     projectUrl.classList.remove("mt-4")
     projectUrl.classList.add("mt-2")
   })
-  //loop over the suckers
-  //projectInfo.classList.remove("hidden")
-  //projectCard.classList.remove("group-hover:bottom-0")
-  //projectImg.classList.remove("group-hover:blur")
-  //TODO rm hover:outline-tertiary and toggle it in eventListener
 }
