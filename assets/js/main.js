@@ -30,6 +30,7 @@ darkModeToggle.addEventListener('click', () => {
     localStorage.setItem(darkModeStateKey, true)
   }
 })
+//TODO consider using @framer/motion to get better control over animations
 // ------------------------------ Sidebar -----------------------------
 //const isRetina = () => window.devicePixelRatio > 1;
 //TODO make an animation for closing/opening svg, right now just simple
@@ -58,6 +59,24 @@ btnSidebar.addEventListener('click', (e) => {
     svgSidebarMobile.setAttribute('d', svgSidebarMobile.getAttribute('d') === 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' ? 'M6 18L18 6M6 6l12 12' : 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5');
   }
 })
+// Event Delegation: Sidebar Sub Nav Buttons
+const navSidebar = document.querySelector("#navSidebar")
+navSidebar.addEventListener("click", (e) => {
+  const selectNavSidebar = event.target
+  if ( selectNavSidebar.classList.contains("btnsNavSidebar")) {
+    //SVG btn:
+    const svgSubNavSidebar = selectNavSidebar.parentNode.querySelector(".svgSubNavSidebar")
+    svgSubNavSidebar.setAttribute('d', svgSubNavSidebar.getAttribute('d') === 'm19.5 8.25-7.5 7.5-7.5-7.5' ? 'm4.5 15.75 7.5-7.5 7.5 7.5' : 'm19.5 8.25-7.5 7.5-7.5-7.5');
+    //Sub Nav toggle:
+    const subNavSidebar = selectNavSidebar.nextElementSibling
+    subNavSidebar.classList.toggle("hidden")
+    // border fix:
+    if (selectNavSidebar.parentNode.nextElementSibling) {
+      const nextLiNavSidebar = selectNavSidebar.parentNode.nextElementSibling.firstElementChild
+      nextLiNavSidebar.classList.toggle("border-t-2")
+    }
+  }
+})
 // -------------------------- portfolio-page --------------------------
 const userAgent = navigator.userAgent;
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
@@ -81,21 +100,21 @@ if(document.querySelector('#portfolio')) {
   // Event Delegation: toggle classes when mobile info icon clicked
   projects.addEventListener('click', (e) => {
     //FIXME I think it's literally my fat fingers lol, try to increase trigger area of buttons
-    const targetElement = event.target
-    if ( targetElement.classList.contains("svgInfo") ) {
+    const selectProjectCards = event.target
+    if ( selectProjectCards.classList.contains("svgInfo") ) {
       // target path ele/ child of svg
-      const svgInfoPath = targetElement.querySelector('.svgInfoPath');
+      const svgInfoPath = selectProjectCards.querySelector('.svgInfoPath');
       svgInfoPath.setAttribute('d', svgInfoPath.getAttribute('d') === 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z' ? 'M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 37.690466 12.309534 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 13.390466 46 4 36.609534 4 25 C 4 13.390466 13.390466 4 25 4 z M 32.990234 15.986328 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.990234 15.986328 z' : 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z');
       // traverse and select img
-      const projectImg = targetElement.parentNode.parentNode.querySelector(".projectImg");
-      //const projectImg = targetElement.parentNode.previousElementSibling
+      const projectImg = selectProjectCards.parentNode.parentNode.querySelector(".projectImg");
+      //const projectImg = selectProjectCards.parentNode.previousElementSibling
       projectImg.classList.toggle("blur")
       // select content section
-      const projectContent = targetElement.parentNode.parentNode.querySelector(".projectContent");
-      //const projectCard = targetElement.parentNode.nextElementSibling
+      const projectContent = selectProjectCards.parentNode.parentNode.querySelector(".projectContent");
+      //const projectCard = selectProjectCards.parentNode.nextElementSibling
       projectContent.classList.toggle("bottom-0")
       // select the card wrapper
-      const projectCard = targetElement.parentNode.parentNode;
+      const projectCard = selectProjectCards.parentNode.parentNode;
       projectCard.classList.toggle("outline-imgOutline")
       projectCard.classList.toggle("outline-black")
     }

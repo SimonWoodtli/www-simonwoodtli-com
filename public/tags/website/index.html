@@ -69,11 +69,47 @@
   <section class="2xl:mx-[2.375rem] mx-[1.5rem] 2xl:mt-14 mt-12">
     <span class="block w-min 2xl:text-2xl text-xl border-b-[3px] 2xl:pb-3 pb-2 2xl:pr-4 pr-2 border-accent">Menu</span>
     <nav class="mt-9 2xl:text-lg text-base uppercase font-thin">
-      <ul class="flex flex-col">
+      <ul id="navSidebar" class="flex flex-col select-none">
+
         <li><a href="/" class="block transition duration-200 hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">Home</a></li>
-        <li><a href="/archive" class="block transition duration-200 hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">Archive</a></li>
-        <li><a href="/tags" class="block transition duration-200 hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">Tags</a></li>
-        <li><a href="/portfolio" class="block transition duration-200 hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">Portfolio</a></li>
+
+        <li>
+          <button class="btnsNavSidebar w-full flex justify-between transition duration-200 uppercase hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">
+            Blog
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-muted fill-transparent"><path class="svgSubNavSidebar" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <ul class="hidden">
+            <li class="pt-4"><a href="/" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent">Posts</a></li>
+            <li><a href="/archive" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent">Archive</a></li>
+            <li class="pb-4"><a href="/tags" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent">Tags</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <button class="btnsNavSidebar w-full flex justify-between transition duration-200 uppercase hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">
+            Portfolio
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-muted fill-transparent"><path class="svgSubNavSidebar" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <ul class="hidden">
+            <li class="pt-4"><a href="/portfolio" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent">Intro</a></li>
+            <li><a href="/portfolio#WIP" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent">Services</a></li>
+            <li class="pb-4"><a href="/portfolio#project" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent">Projects</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <button class="btnsNavSidebar w-full flex justify-between transition duration-200 uppercase hover:bg-tertiary border-b-2 border-quaternary 2xl:py-4 py-3">
+            Tech
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-muted fill-transparent"><path class="svgSubNavSidebar" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <ul class="hidden">
+            <li class="pt-4"><a href="https://git.simonwoodtli.com" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent" target="_blank">Git Server</a></li>
+            <li><a href="https://github.com/simonwoodtli/zet" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent" target="_blank">Notes</a></li>
+            <li><a href="https://uptime.simonwoodtli.com" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent" target="_blank">Server Uptime</a></li>
+            <li class="pb-4"><a href="https://data.simonwoodtli.com" class="block pl-4 py-2 2xl:text-base text-sm hover:text-accent" target="_blank">Files</a></li>
+          </ul>
+        </li>
+
       </ul>
     </nav>
   </section>
