@@ -3050,10 +3050,6 @@ video {
   .lg\:align-bottom {
     vertical-align: bottom;
   }
-
-  .lg\:align-text-bottom {
-    vertical-align: text-bottom;
-  }
 }
 
 @media (min-width: 1280px) {
@@ -3183,10 +3179,6 @@ video {
     height: 1.5rem;
   }
 
-  .\32xl\:h-7 {
-    height: 1.75rem;
-  }
-
   .\32xl\:h-8 {
     height: 2rem;
   }
@@ -3197,10 +3189,6 @@ video {
 
   .\32xl\:w-6 {
     width: 1.5rem;
-  }
-
-  .\32xl\:w-7 {
-    width: 1.75rem;
   }
 
   .\32xl\:w-8 {
