@@ -4,7 +4,7 @@ i: '1'
 date: 2024-01-05T14:52:07Z
 type: blog
 cover: false
-tags: []
+tags: ['linux', 'server', 'ssh', 'security', 'sysadmin']
 ---
 
 Today we're going to take a look at how to configure and setup a

@@ -1,0 +1,46 @@
+name: CI to deploy www
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+  # Manually trigger Action:
+  workflow_dispatch:
+
+#Change env. vars to your needs:
+env:
+    #Server username:
+    USER: ${{ secrets.USER }}
+    #Server hostname&domain name:
+    HOST: ${{ secrets.HOST }}
+    SSH_PORT: ${{ secrets.SSH_PORT }}
+    #Private key:
+    SSH_KEY: ${{ secrets.SSH_KEY }}
+    SSHKEY_PASSPHRASE: ${{ secrets.SSHKEY_PASSPHRASE }}
+    #GITUSER: ${{ github.actor }}
+    #GITPASSWORD: ${{ github.token }}
+
+#TODO for TinaCMS and posting from phone I probably will have to add a
+#whole hugo build process in the pipe with all the tools/dependencies
+#that I use.
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Site
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.HOST }}
+        username: ${{ env.USER }}
+        key: ${{ env.SSH_KEY }}
+        passphrase: ${{ env.SSHKEY_PASSPHRASE }}
+        port: ${{ env.SSH_PORT }}
+        script: |
+          ## I symlinked the public dir from www-simon to ~/www. It's where
+          ## my nginx sites are hosted (you might do /var/www).
+          ## I don't develop on the server directly, just pull data. You
+          ## might do differently consider using `git stash` before pull.
+          cd /home/${{ env.USER }}/Repos/github.com/SimonWoodtli/www-simonwoodtli-com
+          git pull --force origin main
