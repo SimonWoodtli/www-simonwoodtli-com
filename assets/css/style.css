@@ -1670,16 +1670,16 @@ video {
   background-color: rgb(var(--color-bg-tertiary) / var(--tw-bg-opacity));
 }
 
-.bg-opacity-10 {
-  --tw-bg-opacity: 0.1;
-}
-
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
 
 .bg-opacity-5 {
   --tw-bg-opacity: 0.05;
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 
 .bg-opacity-80 {
@@ -1704,6 +1704,10 @@ video {
 
 .fill-transparent {
   fill: transparent;
+}
+
+.fill-white {
+  fill: rgb(var(--color-text-white) / 1);
 }
 
 .stroke-muted {
