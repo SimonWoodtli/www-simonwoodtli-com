@@ -62,17 +62,37 @@ btnSidebar.addEventListener('click', (e) => {
 // Event Delegation: Sidebar Sub Nav Buttons
 const navSidebar = document.querySelector("#navSidebar")
 navSidebar.addEventListener("click", (e) => {
-  const selectNavSidebar = event.target
-  if ( selectNavSidebar.classList.contains("btnsNavSidebar")) {
+  //const e.target = event.target
+  if ( e.target.classList.contains("btnNavSidebar")) {
     //SVG btn:
-    const svgSubNavSidebar = selectNavSidebar.parentNode.querySelector(".svgSubNavSidebar")
-    svgSubNavSidebar.setAttribute('d', svgSubNavSidebar.getAttribute('d') === 'm19.5 8.25-7.5 7.5-7.5-7.5' ? 'm4.5 15.75 7.5-7.5 7.5 7.5' : 'm19.5 8.25-7.5 7.5-7.5-7.5');
+    const svgPathNavSidebar = e.target.querySelector(".svgPathNavSidebar")
+    svgPathNavSidebar.setAttribute('d', svgPathNavSidebar.getAttribute('d') === 'm19.5 8.25-7.5 7.5-7.5-7.5' ? 'm4.5 15.75 7.5-7.5 7.5 7.5' : 'm19.5 8.25-7.5 7.5-7.5-7.5');
     //Sub Nav toggle:
-    const subNavSidebar = selectNavSidebar.nextElementSibling
+    const subNavSidebar = e.target.nextElementSibling
     subNavSidebar.classList.toggle("hidden")
     // border fix:
-    if (selectNavSidebar.parentNode.nextElementSibling) {
-      const nextLiNavSidebar = selectNavSidebar.parentNode.nextElementSibling.firstElementChild
+    if (e.target.parentNode.nextElementSibling) {
+      const nextLiNavSidebar = e.target.parentNode.nextElementSibling.firstElementChild
+      nextLiNavSidebar.classList.toggle("border-t-2")
+    }
+  }
+  //FIXME: to make both btn and svg click events work another if check
+  //is needed. But even the logic inside is slightly different due to
+  //DOM position of both elements not being the same. So DOM traversing
+  //is not the same for both but almost. This is just temporarily until I
+  //come up with a bettter idea how to solve this.
+  //FIXME: on mobile it registers the svg fine, but with mouse not every
+  //area gets triggered when clicking on svg
+  if ( e.target.classList.contains("svgNavSidebar")) {
+    //SVG btn: (this one is the same)
+    const svgPathNavSidebar = e.target.querySelector(".svgPathNavSidebar")
+    svgPathNavSidebar.setAttribute('d', svgPathNavSidebar.getAttribute('d') === 'm19.5 8.25-7.5 7.5-7.5-7.5' ? 'm4.5 15.75 7.5-7.5 7.5 7.5' : 'm19.5 8.25-7.5 7.5-7.5-7.5');
+    //Sub Nav toggle: (not the same)
+    const subNavSidebar = e.target.parentNode.nextElementSibling
+    subNavSidebar.classList.toggle("hidden")
+    // border fix: (not the same)
+    if (e.target.parentNode.nextElementSibling) {
+      const nextLiNavSidebar = e.target.parentNode.parentNode.nextElementSibling.firstElementChild
       nextLiNavSidebar.classList.toggle("border-t-2")
     }
   }
@@ -105,6 +125,10 @@ if(document.querySelector('#portfolio')) {
       // target path ele/ child of svg
       const svgInfoPath = selectProjectCards.querySelector('.svgInfoPath');
       svgInfoPath.setAttribute('d', svgInfoPath.getAttribute('d') === 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z' ? 'M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 37.690466 12.309534 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 13.390466 46 4 36.609534 4 25 C 4 13.390466 13.390466 4 25 4 z M 32.990234 15.986328 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.990234 15.986328 z' : 'M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z');
+      // Change bg color:
+      const divInfoSvg = selectProjectCards.parentNode
+      divInfoSvg.classList.toggle("bg-accent")
+      divInfoSvg.classList.toggle("bg-muted")
       // traverse and select img
       const projectImg = selectProjectCards.parentNode.parentNode.querySelector(".projectImg");
       //const projectImg = selectProjectCards.parentNode.previousElementSibling
