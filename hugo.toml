@@ -5,7 +5,7 @@ source = "https://github.com/SimonWoodtli/simonwoodtli.com/"
 baseURL = 'https://simonwoodtli.com/'
 license = "Apache-2.0"
 licenselink = "https://github.com/SimonWoodtli/simonwoodtli.com/blob/main/LICENSE"
-copyright = "Simon Woodtli - [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)"
+copyright = "Simon D. Woodtli - [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)"
 
 
 ## sets amount of entries shown in list pages per page
@@ -28,9 +28,9 @@ paginate = 30
     noclasses = false
 ########################### RSS/Atom Settings ##########################
 [params.author]
-name = "Simon Woodtli"
+name = "Simon D. Woodtli"
 uri = "https://www.simonwoodtli.com/"
-email = "simonwoodtli@posteo.net"
+email = "me@simonwoodtli.com"
 twitter = "simonwoodtlidev"
 image = "simonwoodtli.jpg"
 [params.brand]
